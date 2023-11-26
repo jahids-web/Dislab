@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dislab.Base
 {
-    internal class BaseModule
+    public class BaseModule
     {
     }
 }
