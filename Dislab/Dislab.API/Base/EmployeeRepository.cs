@@ -40,7 +40,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, id);
+                connection.Execute(sqlQuery);
             }
             catch (Exception exception)
             {
@@ -57,13 +57,14 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, employee);
+                List<Employee> employeeCollection = connection.Query<Employee>(sqlQuery, employee);
+                return employeeCollection;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-            throw new InvalidOperationException();
+            
         }
 
         public Employee GetEmployeeById(long id)
