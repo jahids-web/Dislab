@@ -1,4 +1,7 @@
 
+using Dislab.API.Base;
+using Dislab.API.DbContexts;
+
 namespace Dislab.API
 {
     public class Program
@@ -10,6 +13,11 @@ namespace Dislab.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddTransient<IDapperContext, DapperContext>();
+            builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
