@@ -1,8 +1,6 @@
 ﻿using Dapper;
 using Dislab.API.DbContexts;
 using Dislab.API.Entities;
-using Microsoft.Data.SqlClient;
-using System;
 
 namespace Dislab.API.Base
 {
@@ -14,7 +12,7 @@ namespace Dislab.API.Base
         {
             _context = context;
         }
-        public void Create(Employee employee)
+        public Employee Create(Employee employee)
         {
             try
             {
@@ -23,15 +21,17 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, employee);
+                var result = connection.QuerySingle<Employee>(sqlQuery, employee);
+                return result;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
+           
         }
 
-        public void Delete(long id)
+        public Employee Delete(long id)
         {
             try
             {
@@ -40,7 +40,8 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery);
+                var result = connection.QuerySingle(sqlQuery);
+                return result;
             }
             catch (Exception exception)
             {
@@ -48,7 +49,7 @@ namespace Dislab.API.Base
             }
         }
 
-        public List<Employee> GetAll(Employee employee)
+        public IEnumerable<Employee> GetAll(Employee employee)
         {
             try
             {
@@ -57,14 +58,13 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, employee);
-               
+                var result =  connection.Query<Employee>(sqlQuery, employee);
+                return result;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-            throw new InvalidOperationException();
         }
 
         public Employee GetEmployeeById(long id)
@@ -76,31 +76,31 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, id);
+                var result = connection.QuerySingle<Employee>(sqlQuery, id);
+                return result;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-            throw new InvalidOperationException();
+            
         }
 
         public Employee Update(Employee employee)
         {
             try
             {
-
                 var sqlQuery = @"UPDATE Employee SET Name = @Name, Email = @Email";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, employee);
+                var result = connection.QuerySingle<Employee>(sqlQuery, employee);
+                return result;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-            return employee;
         }
     }
 }
