@@ -4,10 +4,10 @@ namespace Dislab.API.Base
 {
     public interface IEmployeeRepository
     {
-        public void Create(Employee employee);
+        public Employee Create(Employee employee);
         public Employee Update(Employee employee);
-        public void Delete(long id);
+        public Employee Delete(long id);
         public Employee GetEmployeeById(long id);
-        public List<Employee> GetAll(Employee employee);
+        public IEnumerable<Employee> GetAll(Employee employee);
     }
 }
