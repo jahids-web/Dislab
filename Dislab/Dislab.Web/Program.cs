@@ -1,3 +1,4 @@
+using Dislab.Membership.Services;
 using Dislab.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,15 @@ namespace Dislab.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Autofac Configuration
+            //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            //builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+            //{
+            //    containerBuilder.RegisterModule(new BaseModule(configuration , services));
+            //    containerBuilder.RegisterModule(new MembershipModule());
+            //});
+            builder.Services.AddTransient<IAskQuestionService, AskQuestionService>();
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
