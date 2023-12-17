@@ -13,6 +13,7 @@ namespace Dislab.API.DbContexts
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("DefaultConnection");
         }
+
         public IDbConnection CreateConnection()
         {
             return new SqlConnection(_connectionString);
