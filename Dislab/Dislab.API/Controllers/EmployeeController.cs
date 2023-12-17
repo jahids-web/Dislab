@@ -23,5 +23,30 @@ namespace Dislab.API.Controllers
             return (result);
 
         }
+
+        [HttpDelete("{id}")]
+        public Employee Delete(long id)
+        {
+            return _employeeServices.Delete(id);
+        }
+
+        [HttpGet]
+        //public Employee GetAll(Employee employee)
+        //{
+        //    var data = _employeeServicesy.GetAll(employee);
+        //    return data;
+        //}
+
+        [HttpGet("{id}")]
+        public Employee GetEmployeeById(long id)
+        {
+            return _employeeServices.GetEmployeeById(id);
+        }
+
+        [HttpPut("{employee}")]
+        public Employee Update(Employee employee)
+        {
+            return _employeeServices.Update(employee);
+        }
     }
 }
