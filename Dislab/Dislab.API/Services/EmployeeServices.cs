@@ -11,9 +11,10 @@ namespace Dislab.API.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public Employee Create(Employee employee)
+
+        public Employee Insert(Employee employee)
         {
-            return _unitOfWork.EmployeeRepository.Create(employee);
+            return  _unitOfWork.EmployeeRepository.Create(employee);
         }
 
         public Employee Delete(long id)
@@ -35,5 +36,7 @@ namespace Dislab.API.Services
         {
             return _unitOfWork.EmployeeRepository.Update(employee);
         }
+
+       
     }
 }
