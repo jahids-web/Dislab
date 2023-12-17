@@ -16,7 +16,6 @@ namespace Dislab.API.Base
         {
             try
             {
-                
                 var sqlQuery = @"INSERT INTO Employee (Name, Email) VALUES (@Name, @Email)";
 
                 using var connection = _context.CreateConnection();
@@ -28,14 +27,13 @@ namespace Dislab.API.Base
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-           
+            
         }
 
         public Employee Delete(long id)
         {
             try
             {
-
                 var sqlQuery = @"DELETE FROM Employee WHERE Id = @id";
 
                 using var connection = _context.CreateConnection();
@@ -53,7 +51,6 @@ namespace Dislab.API.Base
         {
             try
             {
-
                 var sqlQuery = @"SELETE * FROM Employee";
 
                 using var connection = _context.CreateConnection();
@@ -71,7 +68,6 @@ namespace Dislab.API.Base
         {
             try
             {
-
                 var sqlQuery = @"SELECT * FROM Employee WHERE Id = @id";
 
                 using var connection = _context.CreateConnection();
