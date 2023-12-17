@@ -9,5 +9,6 @@ namespace Dislab.API.Base
         public Employee Delete(long id);
         public Employee GetEmployeeById(long id);
         public IEnumerable<Employee> GetAll(Employee employee);
+       
     }
 }
