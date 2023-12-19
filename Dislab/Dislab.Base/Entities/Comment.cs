@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dislab.Base.Entities
 {
-    internal class Comment
+    public class Comment
     {
     }
 }
