@@ -9,4 +9,9 @@ namespace Dislab.Membership.Services
     public interface IAskQuestionService
     {
     }
+
+    public class AskQuestionService : IAskQuestionService
+    {
+
+    }
 }
