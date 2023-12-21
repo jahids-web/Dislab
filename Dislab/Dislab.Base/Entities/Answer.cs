@@ -8,5 +8,6 @@ namespace Dislab.Base.Entities
 {
     public class Answer
     {
+
     }
 }
