@@ -20,7 +20,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.QuerySingle<Employee>(sqlQuery, employee);
+                var result = connection.QuerySingle<Employee>(sqlQuery, employee);/* commandType: System.Data.CommandType.StoredProcedure*/
                 return result;
             }
             catch (Exception exception)

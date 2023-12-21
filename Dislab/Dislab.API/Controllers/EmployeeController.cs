@@ -17,9 +17,9 @@ namespace Dislab.API.Controllers
         }
 
         [HttpPost]
-        public Employee Insert(Employee request)
+        public Employee Insert(Employee employee)
         {
-            var result = _employeeServices.Insert(request);
+            var result = _employeeServices.Insert(employee);
             return (result);
 
         }
@@ -31,11 +31,11 @@ namespace Dislab.API.Controllers
         }
 
         [HttpGet]
-        //public Employee GetAll(Employee employee)
-        //{
-        //    var data = _employeeServicesy.GetAll(employee);
-        //    return data;
-        //}
+        public IEnumerable<Employee> GetAll(Employee employee)
+        {
+            var data = _employeeServices.GetAll(employee);
+            return data;
+        }
 
         [HttpGet("{id}")]
         public Employee GetEmployeeById(long id)

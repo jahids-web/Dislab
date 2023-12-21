@@ -14,7 +14,8 @@ namespace Dislab.API.Services
 
         public Employee Insert(Employee employee)
         {
-            return  _unitOfWork.EmployeeRepository.Create(employee);
+            var result = _unitOfWork.EmployeeRepository.Create(employee);
+            return result; 
         }
 
         public Employee Delete(long id)
