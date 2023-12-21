@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface ISearchRepository
     {
     }
+
+    public class SearchRepository: ISearchRepository
+    {
+
+    }
 }
