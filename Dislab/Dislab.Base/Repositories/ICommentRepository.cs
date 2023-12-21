@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface ICommentRepository
     {
     }
+
+    public class CommentRepository : ICommentRepository
+    {
+
+    }
 }
