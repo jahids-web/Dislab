@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface ITagRepository
     {
     }
+
+    public class TagRepository : ITagRepository
+    {
+
+    }
 }
