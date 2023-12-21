@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface IAnswerRepository
     {
     }
+
+    public class AnswerRepository : IAnswerRepository
+    {
+
+    }
 }
