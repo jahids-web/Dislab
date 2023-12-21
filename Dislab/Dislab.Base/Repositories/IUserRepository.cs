@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface IUserRepository
     {
     }
+
+    public class UserRepository: IUserRepository
+    {
+
+    }
 }
