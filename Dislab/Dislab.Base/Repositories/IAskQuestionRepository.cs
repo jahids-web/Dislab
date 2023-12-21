@@ -9,4 +9,10 @@ namespace Dislab.Base.Repositories
     public interface IAskQuestionRepository
     {
     }
+
+    public class AskQuestionRepository : IAskQuestionRepository 
+    {
+    
+    }
+
 }
