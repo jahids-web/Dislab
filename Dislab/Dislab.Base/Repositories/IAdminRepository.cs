@@ -9,4 +9,9 @@ namespace Dislab.Base.Repositories
     public interface IAdminRepository
     {
     }
+
+    public class AdminRepository : IAdminRepository
+    {
+
+    }
 }
