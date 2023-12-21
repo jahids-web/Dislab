@@ -9,4 +9,10 @@ namespace Dislab.Base.Repositories
     public interface IVoteRepository
     {
     }
+
+    public class VoteRepository : IVoteRepository 
+    {
+    
+    }
+
 }
