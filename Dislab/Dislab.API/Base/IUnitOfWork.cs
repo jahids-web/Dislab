@@ -2,6 +2,6 @@
 {
     public interface IUnitOfWork
     {
-        public IEmployeeRepository EmployeeRepository { get; set; }
+        public IEmployeeRepository EmployeeRepository { get; }
     }
 }
