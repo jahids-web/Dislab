@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dislab.API.DbContexts;
 using Dislab.API.Entities;
+using Microsoft.Data.SqlClient;
 
 namespace Dislab.API.Base
 {
@@ -20,7 +21,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.QuerySingle<Employee>(sqlQuery, employee);/* commandType: System.Data.CommandType.StoredProcedure*/
+                var result = connection.ExecuteScalar<Employee>(sqlQuery, employee);/* commandType: System.Data.CommandType.StoredProcedure*/
                 return result;
             }
             catch (Exception exception)
@@ -72,7 +73,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.QuerySingle<Employee>(sqlQuery, id);
+                var result = connection.ExecuteScalar<Employee>(sqlQuery, id);
                 return result;
             }
             catch (Exception exception)
