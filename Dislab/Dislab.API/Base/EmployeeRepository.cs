@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Dislab.API.DbContexts;
 using Dislab.API.Entities;
-using Microsoft.Data.SqlClient;
 
 namespace Dislab.API.Base
 {
@@ -31,7 +30,7 @@ namespace Dislab.API.Base
             
         }
 
-        public Employee Delete(long id)
+        public long Delete(long id)
         {
             try
             {
@@ -39,7 +38,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.QuerySingle(sqlQuery);
+                var result = connection.Execute(sqlQuery, new {id});
                 return result;
             }
             catch (Exception exception)
@@ -65,7 +64,7 @@ namespace Dislab.API.Base
             }
         }
 
-        public Employee GetEmployeeById(long id)
+        public long GetEmployeeById(long id)
         {
             try
             {
@@ -73,14 +72,13 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.ExecuteScalar<Employee>(sqlQuery, id);
+                var result = connection.Query<Employee>(sqlQuery, new { id }).FirstOrDefault();
                 return result;
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
-            
         }
 
         public Employee Update(Employee employee)
@@ -91,7 +89,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.QuerySingle<Employee>(sqlQuery, employee);
+                var result = connection.Execute<Employee>(sqlQuery, new { employee });
                 return result;
             }
             catch (Exception exception)
