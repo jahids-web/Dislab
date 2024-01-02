@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Dislab.API.Entities;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace Dislab.API.DbContexts
@@ -19,5 +21,6 @@ namespace Dislab.API.DbContexts
             return new SqlConnection(_connectionString);
         }
       
+        //public DbSet<Employee> Employee { get; set; }
     }
 }
