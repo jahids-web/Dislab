@@ -14,6 +14,6 @@ namespace Dislab.API.Base
             _dapperContext = dapperContext;
         }
         public IEmployeeRepository EmployeeRepository => _employeeRepository ?? new EmployeeRepository(_dapperContext);
-       
+
     }
 }
