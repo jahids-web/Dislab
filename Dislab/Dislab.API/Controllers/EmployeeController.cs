@@ -25,9 +25,10 @@ namespace Dislab.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public Employee Delete(long id)
+        public IActionResult Delete(long id)
         {
-            return _employeeServices.Delete(id);
+            _employeeServices.Delete(id);
+            return Ok(new { IsSuccess = true, Message = "Employee Deleted Successfully." });
         }
 
         [HttpGet]
@@ -38,15 +39,21 @@ namespace Dislab.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public Employee GetEmployeeById(long id)
+        public IActionResult GetEmployeeById(long id)
         {
-            return _employeeServices.GetEmployeeById(id);
+           var employee = _employeeServices.GetEmployeeById(id);
+            return Ok(new { IsSuccess = true, 
+                Message = "Employee  Successfully.",
+                Data = employee
+            });
         }
 
         [HttpPut("{employee}")]
-        public Employee Update(Employee employee)
+        public IEnumerable<Employee> Update(Employee employee)
         {
-            return _employeeServices.Update(employee);
+            var data = _employeeServices.GetAll(employee);
+            return data;
+
         }
     }
 }
