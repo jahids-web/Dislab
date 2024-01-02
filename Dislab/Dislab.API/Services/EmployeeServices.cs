@@ -18,7 +18,7 @@ namespace Dislab.API.Services
             return result; 
         }
 
-        public Employee Delete(long id)
+        public long Delete(long id)
         {
             return _unitOfWork.EmployeeRepository.Delete(id);
         }
@@ -28,7 +28,7 @@ namespace Dislab.API.Services
             return _unitOfWork.EmployeeRepository.GetAll(employee);
         }
 
-        public Employee GetEmployeeById(long id)
+        public long GetEmployeeById(long id)
         {
             return _unitOfWork.EmployeeRepository.GetEmployeeById(id);
         }
