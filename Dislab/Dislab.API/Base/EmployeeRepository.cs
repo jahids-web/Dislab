@@ -72,7 +72,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Query<Employee>(sqlQuery, new { id }).FirstOrDefault();
+                var result = connection.Query<Employee>(sqlQuery, new { id });
                 return result;
             }
             catch (Exception exception)
