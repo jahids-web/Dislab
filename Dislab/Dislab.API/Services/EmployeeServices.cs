@@ -28,16 +28,16 @@ namespace Dislab.API.Services
             return _unitOfWork.EmployeeRepository.GetAll(employee);
         }
 
-        public long GetEmployeeById(long id)
+        public IEnumerable<Employee> GetEmployeeById(long id)
         {
             return _unitOfWork.EmployeeRepository.GetEmployeeById(id);
         }
 
-        public Employee Update(Employee employee)
+        public void Update(Employee employee)
         {
-            return _unitOfWork.EmployeeRepository.Update(employee);
+           _unitOfWork.EmployeeRepository.Update(employee);
         }
 
-       
+
     }
 }
