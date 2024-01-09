@@ -41,18 +41,20 @@ namespace Dislab.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(long id)
         {
-           var employee = _employeeServices.GetEmployeeById(id);
-            return Ok(new { IsSuccess = true, 
+            var employee = _employeeServices.GetEmployeeById(id);
+            return Ok(new
+            {
+                IsSuccess = true,
                 Message = "Employee  Successfully.",
                 Data = employee
             });
         }
 
-        [HttpPut("{employee}")]
-        public IEnumerable<Employee> Update(Employee employee)
+        [HttpPut("{id}")]
+        public void Update(Employee employee)
         {
-            var data = _employeeServices.GetAll(employee);
-            return data;
+             _employeeServices.Update(employee);
+          
 
         }
     }
