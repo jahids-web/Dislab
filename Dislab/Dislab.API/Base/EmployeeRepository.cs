@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dislab.API.DbContexts;
 using Dislab.API.Entities;
+using System.Data.Common;
 
 namespace Dislab.API.Base
 {
@@ -38,7 +39,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Execute(sqlQuery, new {id});
+                var result = connection.Execute(sqlQuery, new { id });
                 return result;
             }
             catch (Exception exception)
@@ -55,7 +56,7 @@ namespace Dislab.API.Base
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result =  connection.Query<Employee>(sqlQuery, employee);
+                var result = connection.Query<Employee>(sqlQuery, new { employee });
                 return result;
             }
             catch (Exception exception)
@@ -64,7 +65,7 @@ namespace Dislab.API.Base
             }
         }
 
-        public long GetEmployeeById(long id)
+        public IEnumerable<Employee> GetEmployeeById(long id)
         {
             try
             {
@@ -81,21 +82,23 @@ namespace Dislab.API.Base
             }
         }
 
-        public Employee Update(Employee employee)
+        public void Update(Employee employee)
         {
             try
             {
-                var sqlQuery = @"UPDATE Employee SET Name = @Name, Email = @Email";
+                var sqlQuery = @"UPDATE Employee SET Name = @Name, Email = @Email WHERE Id = @Id";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Execute<Employee>(sqlQuery, new { employee });
-                return result;
+                connection.Execute(sqlQuery, new { employee.Name, employee.Email, employee.Id });
             }
             catch (Exception exception)
             {
                 throw new InvalidOperationException(exception.Message, exception);
             }
         }
+
+
+
     }
 }
