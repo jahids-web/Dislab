@@ -52,11 +52,11 @@ namespace Dislab.API.Base
         {
             try
             {
-                var sqlQuery = @"SELETE * FROM Employee";
+                var sqlQuery = @"SELECT * FROM Employee";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Query<Employee>(sqlQuery, new { employee });
+                var result = connection.Query<Employee>(sqlQuery);
                 return result;
             }
             catch (Exception exception)
@@ -86,7 +86,7 @@ namespace Dislab.API.Base
         {
             try
             {
-                var sqlQuery = @"UPDATE Employee SET Name = @Name, Email = @Email WHERE Id = @Id";
+                var sqlQuery = @"UPDATE Employee SET Name = @Name,Email = @Email WHERE Id = @Id";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
