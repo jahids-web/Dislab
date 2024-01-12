@@ -32,9 +32,9 @@ namespace Dislab.API.Services
             _unitOfWork.EmployeeRepository.Update(employee);
         }
 
-        public IEnumerable<Employee> GetAll(Employee employee)
+        public IEnumerable<Employee> GetAll()
         {
-            return _unitOfWork.EmployeeRepository.GetAll(employee);
+            return _unitOfWork.EmployeeRepository.GetAll();
         }
 
     }
