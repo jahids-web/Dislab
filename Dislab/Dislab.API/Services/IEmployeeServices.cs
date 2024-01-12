@@ -8,6 +8,6 @@ namespace Dislab.API.Services
         public void Update(Employee employee);
         public long Delete(long id);
         public IEnumerable<Employee> GetEmployeeById(long id);
-        public IEnumerable<Employee> GetAll(Employee employee);
+        public IEnumerable<Employee> GetAll();
     }
 }
