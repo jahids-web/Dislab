@@ -22,12 +22,6 @@ namespace Dislab.API.Services
         {
             return _unitOfWork.EmployeeRepository.Delete(id);
         }
-
-        public IEnumerable<Employee> GetAll(Employee employee)
-        {
-            return _unitOfWork.EmployeeRepository.GetAll(employee);
-        }
-
         public IEnumerable<Employee> GetEmployeeById(long id)
         {
             return _unitOfWork.EmployeeRepository.GetEmployeeById(id);
@@ -35,9 +29,13 @@ namespace Dislab.API.Services
 
         public void Update(Employee employee)
         {
-           _unitOfWork.EmployeeRepository.Update(employee);
+            _unitOfWork.EmployeeRepository.Update(employee);
         }
 
+        public IEnumerable<Employee> GetAll(Employee employee)
+        {
+            return _unitOfWork.EmployeeRepository.GetAll(employee);
+        }
 
     }
 }
