@@ -16,7 +16,7 @@ namespace Dislab.API.Controllers
             _employeeServices = employeeServices;
         }
 
-        [HttpPost]
+        [HttpPost ("InsertEmployee")]
         public Employee Insert(Employee employee)
         {
             var result = _employeeServices.Insert(employee);
@@ -24,16 +24,14 @@ namespace Dislab.API.Controllers
 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(long id)
         {
             _employeeServices.Delete(id);
             return Ok(new { IsSuccess = true, Message = "Employee Deleted Successfully." });
         }
 
-       
-
-        [HttpGet("{id}")]
+        [HttpGet("GetEmployeeBy/{id}")]
         public IActionResult GetEmployeeById(long id)
         {
             var employee = _employeeServices.GetEmployeeById(id);
@@ -45,16 +43,16 @@ namespace Dislab.API.Controllers
             });
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateEmployeeBy/{id}")]
         public void Update(Employee employee)
         {
              _employeeServices.Update(employee);
         }
 
-        [HttpGet]
-        public IEnumerable<Employee> GetAll(Employee employee)
+        [HttpGet("GetAllEmployee")]
+        public IEnumerable<Employee> GetAll()
         {
-            var data = _employeeServices.GetAll(employee);
+            var data = _employeeServices.GetAll();
             return data;
         }
     }
