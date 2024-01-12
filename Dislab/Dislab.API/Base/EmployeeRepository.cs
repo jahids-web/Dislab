@@ -48,7 +48,7 @@ namespace Dislab.API.Base
             }
         }
 
-        public IEnumerable<Employee> GetAll(Employee employee)
+        public IEnumerable<Employee> GetAll()
         {
             try
             {
@@ -83,6 +83,7 @@ namespace Dislab.API.Base
         }
 
         public void Update(Employee employee)
+        
         {
             try
             {
