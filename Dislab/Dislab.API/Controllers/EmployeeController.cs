@@ -31,12 +31,7 @@ namespace Dislab.API.Controllers
             return Ok(new { IsSuccess = true, Message = "Employee Deleted Successfully." });
         }
 
-        [HttpGet]
-        public IEnumerable<Employee> GetAll(Employee employee)
-        {
-            var data = _employeeServices.GetAll(employee);
-            return data;
-        }
+       
 
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(long id)
@@ -54,8 +49,13 @@ namespace Dislab.API.Controllers
         public void Update(Employee employee)
         {
              _employeeServices.Update(employee);
-          
+        }
 
+        [HttpGet]
+        public IEnumerable<Employee> GetAll(Employee employee)
+        {
+            var data = _employeeServices.GetAll(employee);
+            return data;
         }
     }
 }
