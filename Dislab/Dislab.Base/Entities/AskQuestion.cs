@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dislab.Base.Entities
 {
-    public class Question
+    public class AskQuestion
     {
         [Key] 
         public Guid Id { get; set; }
