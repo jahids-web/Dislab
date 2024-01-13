@@ -1,3 +1,6 @@
+using Dislab.API.Base;
+using Dislab.API.DbContexts;
+using Dislab.Base.Repositories;
 using Dislab.Membership.Services;
 using Dislab.Web.Data;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +21,14 @@ namespace Dislab.Web
             //    containerBuilder.RegisterModule(new BaseModule(configuration , services));
             //    containerBuilder.RegisterModule(new MembershipModule());
             //});
+
+            // Add services to the container.
+
+            builder.Services.AddControllers();
+
+            builder.Services.AddTransient<IDapperContext, DapperContext>();
+            builder.Services.AddTransient<IAskQuestionRepository, AskQuestionRepository>();
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IAskQuestionService, AskQuestionService>();
 
             // Add services to the container.
