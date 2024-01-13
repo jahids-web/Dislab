@@ -2,7 +2,7 @@
 
 namespace Dislab.Web.Controllers
 {
-    public class QuestionController : Controller
+    public class AskQuestionController : Controller
     {
         public IActionResult Index()
         {
