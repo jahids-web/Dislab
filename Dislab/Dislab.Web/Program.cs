@@ -1,10 +1,11 @@
-using Dislab.API.Base;
-using Dislab.API.DbContexts;
-using Dislab.Base.Repositories;
-using Dislab.Membership.Services;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Dislab.Base;
+using Dislab.Membership;
 using Dislab.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Dislab.Web
 {
@@ -15,24 +16,20 @@ namespace Dislab.Web
             var builder = WebApplication.CreateBuilder(args);
 
             //Autofac Configuration
-            //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-            //builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
-            //{
-            //    containerBuilder.RegisterModule(new BaseModule(configuration , services));
-            //    containerBuilder.RegisterModule(new MembershipModule());
-            //});
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            var assemblyName = Assembly.GetExecutingAssembly().FullName!;
+
+            //Autofac Configuration
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+            {
+                containerBuilder.RegisterModule(new WebModule());
+                containerBuilder.RegisterModule(new BaseModule(connectionString, assemblyName));
+                containerBuilder.RegisterModule(new MembershipModule());
+            });
 
             // Add services to the container.
-
-            builder.Services.AddControllers();
-
-            builder.Services.AddTransient<IDapperContext, DapperContext>();
-            builder.Services.AddTransient<IAskQuestionRepository, AskQuestionRepository>();
-            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-            builder.Services.AddTransient<IAskQuestionService, AskQuestionService>();
-
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+           
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
