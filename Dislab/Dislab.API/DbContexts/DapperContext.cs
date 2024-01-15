@@ -21,6 +21,6 @@ namespace Dislab.API.DbContexts
             return new SqlConnection(_connectionString);
         }
       
-        //public DbSet<Employee> Employee { get; set; }
+    
     }
 }
