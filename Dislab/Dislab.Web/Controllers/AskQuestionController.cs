@@ -1,7 +1,5 @@
-﻿using Dislab.API.Entities;
-using Dislab.Base.Entities;
-using Dislab.Base.Repositories;
-using Dislab.Membership.Services;
+﻿using Dislab.Base.Features.Questions.Entities;
+using Dislab.Base.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dislab.Web.Controllers
@@ -21,10 +19,10 @@ namespace Dislab.Web.Controllers
         }
 
         [HttpPost]
-        public AskQuestion Insert(AskQuestion question) 
+        public IActionResult Insert(AskQuestion question) 
         {
             var result = _askQuestionService.Insert(question);
-            return result;
+            return View();
         }
 
         [HttpDelete]
