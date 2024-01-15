@@ -1,10 +1,5 @@
 ﻿using Dislab.Base.DbContexts;
-using Dislab.Base.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dislab.Base.Features.Questions.Domain;
 
 namespace Dislab.Base.Data
 {
