@@ -29,10 +29,10 @@ namespace Dislab.Base
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<AskQuestionRepository>().As<IAskQuestionRepository>()
+            builder.RegisterType<QuestionRepository>().As<IQuestionRepository>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<AskQuestionService>().As<IAskQuestionService>()
+            builder.RegisterType<QuestionService>().As<IQuestionService>()
               .InstancePerLifetimeScope();
 
             base.Load(builder);
