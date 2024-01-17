@@ -16,7 +16,23 @@ namespace Dislab.Web.Controllers
         public IActionResult Index()
         {
             return View();
+        } 
+        
+        public IActionResult AllQuestion()
+        {
+            return View();
+        }    
+        
+        public IActionResult AskQuestion()
+        {
+            return View();
+        }  
+        
+        public IActionResult QuestionDetails()
+        {
+            return View();
         }
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
