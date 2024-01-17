@@ -4,6 +4,6 @@ namespace Dislab.Base.Data
 {
     public interface IUnitOfWork
     {
-        public IAskQuestionRepository AskQuestionRepository { get; }
+        public IQuestionRepository AskQuestionRepository { get; }
     }
 }
