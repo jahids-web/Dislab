@@ -2,7 +2,7 @@
 
 namespace Dislab.Base.Features.Questions.Domain
 {
-    public interface IAskQuestionRepository
+    public interface IQuestionRepository
     {
         public AskQuestion Insert(AskQuestion question);
         public void Update(AskQuestion question);
