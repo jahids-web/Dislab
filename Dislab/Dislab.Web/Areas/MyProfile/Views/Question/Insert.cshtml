@@ -1,0 +1,48 @@
+﻿@model Dislab.Base.Features.Questions.ViewModels.InsertQuestionVM;
+@{
+    ViewData["Title"] = "Insert";
+    Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
+}
+
+<section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-md-6 m-auto col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Create Question</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-horizontal novalidate role="form" method="post"
+                              asp-area="MyProfile" asp-controller="Question" asp-action="Insert" asp-antiforgery="true">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label asp-for="QuestionTitle">Question Title</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <input asp-for="QuestionTitle" type="text" class="form-control" name="QuestionTitle"
+                                               placeholder="Question Title">
+                                    </div>   
+                                    <div class="col-md-4">
+                                        <label asp-for="QuestionBody">Question Body</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <div class="form-group mb-3">
+                                            <textarea asp-for="QuestionBody" name="QuestionBody" class="form-control" placeholder="Question Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
