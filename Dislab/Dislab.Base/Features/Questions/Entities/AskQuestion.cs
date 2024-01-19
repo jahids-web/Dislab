@@ -5,7 +5,7 @@ namespace Dislab.Base.Features.Questions.Entities
     public class AskQuestion
     {
         [Key]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string? QuestionTitle { get; set; }
         public string? QuestionBody { get; set; }
         public int UpVotes { get; set; }
