@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dislab.Base.DbContexts;
 using Dislab.Base.Features.Questions.Entities;
+using Dislab.Base.Features.Questions.ViewModels;
 
 namespace Dislab.Base.Features.Questions.Domain
 {
@@ -12,7 +13,7 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public AskQuestion Insert(AskQuestion question)
+        public bool Insert(InsertQuestionVM model)
         {
             try
             {
@@ -20,8 +21,12 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var resutl = connection.ExecuteScalar<AskQuestion>(sqlQuesy, question);
-                return resutl;
+                var resutl = connection.Execute(sqlQuesy, model);
+                if (resutl > 0)
+                {
+                    return true;
+                }
+                return false;
             }
             catch (Exception exception)
             {
