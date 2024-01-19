@@ -63,9 +63,9 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a asp-area="MyProfile" asp-controller="Dashboard" asp-action="Index" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
+                                <span> Dashboard</span>
                             </a>
                         </li>
 
@@ -74,12 +74,12 @@
                                 <i class="bi bi-stack"></i>
                                 <span>Question</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">All Question</a>
+                            <ul class="submenu">
+                                <li class="submenu-item">
+                                    <a asp-area="MyProfile" asp-controller="Question" asp-action="Index"> All Question</a>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Create Question</a>
+                                <li class="submenu-item">
+                                    <a asp-area="MyProfile" asp-controller="Question" asp-action="Insert"> Create Question</a>
                                 </li>
                             </ul>
                         </li>
