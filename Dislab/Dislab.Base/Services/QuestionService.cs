@@ -1,5 +1,6 @@
 ﻿using Dislab.Base.Data;
 using Dislab.Base.Features.Questions.Entities;
+using Dislab.Base.Features.Questions.ViewModels;
 
 namespace Dislab.Base.Services
 {
@@ -13,9 +14,9 @@ namespace Dislab.Base.Services
             _unitOfWork = uniteOfWork;
         }
 
-        public AskQuestion Insert(AskQuestion question)
+        public bool Insert(InsertQuestionVM model)
         {
-            var result = _unitOfWork.AskQuestionRepository.Insert(question);
+            var result = _unitOfWork.AskQuestionRepository.Insert(model);
             return result;
         }
 
