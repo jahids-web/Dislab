@@ -1,4 +1,5 @@
 ﻿using Dislab.Base.Features.Questions.Entities;
+using Dislab.Base.Features.Questions.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Dislab.Base.Services
 {
     public interface IQuestionService
     {
-        public AskQuestion Insert(AskQuestion question);
+        public bool Insert(InsertQuestionVM model);
         public void Update(AskQuestion question);
         public long Delete(long id);
         public IEnumerable<AskQuestion> GetAll();
