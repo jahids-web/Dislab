@@ -1,5 +1,5 @@
-﻿
-@* @model Dislab.Base.Features.Questions.ViewModels.GetAllQuiestionsVM; *@
+﻿@model Dislab.Base.Features.Questions.ViewModels.GetAllQuiestionsVM;
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -39,10 +39,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                     @*    @foreach (var item in Model.Questions)
+                        @foreach (var item in Model.Questions)
                         {
                             <tr>
-                                <td>1</td>
+                                <td>@item.Id</td>
                                 <td>@item.QuestionTitle</td>
                                 <td>@item.QuestionBody</td>
                                 <td>
@@ -51,32 +51,14 @@
                                             Edit
 
                                         </a>
-                                        <a href="#" class="btn icon btn-danger">
+                                        <a onclick="deletePost('@item.Id')" class="btn icon btn-danger">
                                             Delete
 
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                        } *@
-
-                        <tr>
-                            <td>1</td>
-                            <td>Problam</td>
-                            <td>Problem Body</td>
-                            <td>
-                                <div class="buttons">
-                                    <a href="#" class="btn icon btn-primary">
-                                        Edit
-
-                                    </a>
-                                    <a href="#" class="btn icon btn-danger">
-                                        Delete
-
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
