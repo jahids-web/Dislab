@@ -11,9 +11,9 @@ namespace Dislab.Base.Services
     public interface IQuestionService
     {
         public bool Insert(InsertQuestionVM model);
-        public void Update(AskQuestion question);
+        public void Update(UpdateQuestionVM question);
         public long Delete(long id);
-        public IEnumerable<AskQuestion> GetAll();
+        public GetAllQuiestionsVM GetAll();
         public IEnumerable<AskQuestion> GetByQuestionId(long id);
     }
 }
