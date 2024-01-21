@@ -6,10 +6,10 @@ namespace Dislab.Base.Features.Questions.Domain
     public interface IQuestionRepository
     {
         public bool Insert(InsertQuestionVM model);
-        public void Update(AskQuestion question);
+        public void Update(UpdateQuestionVM question);
         public long Delete(long id);
         public IEnumerable<AskQuestion> GetAll();
-        public IEnumerable<AskQuestion> GetByQuestionId(long id);
+        public AskQuestion GetByQuestionId(long id);
     }
 
 }
