@@ -17,7 +17,8 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
 
         public IActionResult Index()
         {
-            var data = _askQuestionService.GetAll();
+            var data = new GetAllQuiestionsVM();
+            data = _askQuestionService.GetAll();
             return View(data);
         }
 
@@ -56,17 +57,20 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             });
         }
 
-        [HttpPut]
-        public void Update(AskQuestion askQuestion)
+        public IActionResult Update(long id)
         {
-            _askQuestionService.Update(askQuestion);
+           var data = _askQuestionService.GetByQuestionId(id);
+           return View(data);
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpPost]
+        public IActionResult Update(UpdateQuestionVM model)
         {
-            var data = _askQuestionService.GetAll();
-            return View( data);
+            if(ModelState.IsValid)
+            {
+                _askQuestionService.Update(model);
+            }
+            return RedirectToAction(nameof(Index));
         }
 
     }
