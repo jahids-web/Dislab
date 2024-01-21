@@ -25,9 +25,11 @@ namespace Dislab.Base.Services
             return _unitOfWork.AskQuestionRepository.Delete(id);
         }
 
-        public IEnumerable<AskQuestion> GetAll()
+        public GetAllQuiestionsVM GetAll()
         {
-            return _unitOfWork.AskQuestionRepository.GetAll();
+            var result = new GetAllQuiestionsVM();
+            result.Questions = _unitOfWork.AskQuestionRepository.GetAll();
+            return result;
         }
 
         public IEnumerable<AskQuestion> GetByQuestionId(long id)
@@ -35,7 +37,7 @@ namespace Dislab.Base.Services
             return _unitOfWork.AskQuestionRepository.GetByQuestionId(id);
         }
 
-        public void Update(AskQuestion question)
+        public void Update(UpdateQuestionVM question)
         {
             _unitOfWork.AskQuestionRepository.Update(question);
         }
