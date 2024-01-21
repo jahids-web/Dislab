@@ -1,5 +1,6 @@
 ﻿@model Dislab.Base.Features.Questions.ViewModels.GetAllQuiestionsVM;
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -34,7 +35,7 @@
                             <th>No.</th>
                             <th>QuestionTitle</th>
                             <th>QuestionBody</th>
-                            <th>Action</th>
+                            <th style="width: 250px">Action</th>
 
                         </tr>
                     </thead>
@@ -53,7 +54,6 @@
                                         </a>
                                         <a onclick="deletePost('@item.Id')" class="btn icon btn-danger">
                                             Delete
-
                                         </a>
                                     </div>
                                 </td>
