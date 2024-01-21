@@ -60,8 +60,9 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Query<AskQuestion>(sqlQuery);
-                return result;
+                var questionCollection = new GetAllQuiestionsVM();
+                questionCollection.Questions = connection.Query<AskQuestion>(sqlQuery);
+                return questionCollection.Questions;
             }
             catch (Exception exception)
             {
@@ -69,7 +70,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public IEnumerable<AskQuestion> GetByQuestionId(long id)
+        public AskQuestion GetByQuestionId(long id)
         {
             try
             {
@@ -77,7 +78,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = connection.Query<AskQuestion>(sqlQuery, new { id });
+                var result = connection.QueryFirstOrDefault<AskQuestion>(sqlQuery, new { id });
                 return result;
             }
             catch (Exception exception)
@@ -86,7 +87,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public void Update(AskQuestion question)
+        public void Update(UpdateQuestionVM question)
         {
             try
             {
