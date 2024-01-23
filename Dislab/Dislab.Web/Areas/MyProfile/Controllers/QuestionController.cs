@@ -63,11 +63,11 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(UpdateQuestionVM model)
+        public async Task<IActionResult> Update(UpdateQuestionVM model)
         {
             if(ModelState.IsValid)
             {
-                _askQuestionService.UpdateAsync(model);
+               await _askQuestionService.UpdateAsync(model);
             }
             return RedirectToAction(nameof(Index));
         }
