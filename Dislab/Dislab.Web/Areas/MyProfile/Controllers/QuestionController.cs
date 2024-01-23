@@ -27,11 +27,11 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert(InsertQuestionVM model)
+        public async Task<IActionResult> Insert(InsertQuestionVM model)
         {
             if (ModelState.IsValid)
             {
-                var result = _askQuestionService.InsertAsync(model);
+                var result = await _askQuestionService.InsertAsync(model);
             }
            
             return RedirectToAction(nameof(Index));
