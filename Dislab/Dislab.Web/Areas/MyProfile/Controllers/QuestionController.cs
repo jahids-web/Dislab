@@ -56,9 +56,9 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             });
         }
 
-        public IActionResult Update(long id)
+        public async Task<IActionResult> Update(long id)
         {
-           var data = _askQuestionService.GetByQuestionIdAsync(id);
+           var data = await _askQuestionService.GetByQuestionIdAsync(id);
            return View(data);
         }
 
