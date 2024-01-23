@@ -10,10 +10,10 @@ namespace Dislab.Base.Services
 {
     public interface IQuestionService
     {
-        public bool Insert(InsertQuestionVM model);
-        public void Update(UpdateQuestionVM question);
-        public long Delete(long id);
-        public GetAllQuiestionsVM GetAll();
-        public IEnumerable<AskQuestion> GetByQuestionId(long id);
+        public Task<bool> InsertAsync(InsertQuestionVM model);
+        public Task<string> UpdateAsync(UpdateQuestionVM question);
+        public Task<long> DeleteAsync(long id);
+        public Task<IEnumerable<AskQuestion>> GetAllAsync();
+        public Task<AskQuestion> GetByQuestionIdAsync(long id);
     }
 }
