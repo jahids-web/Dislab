@@ -1,5 +1,4 @@
-﻿@model Dislab.Base.Features.Questions.ViewModels.GetAllQuiestionsVM;
-
+﻿@model IEnumerable<Dislab.Base.Features.Questions.Entities.AskQuestion>;
 
 @{
     ViewData["Title"] = "Index";
@@ -40,10 +39,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Questions)
+                        @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.Id</td>
+                                <td></td>
                                 <td>@item.QuestionTitle</td>
                                 <td>@item.QuestionBody</td>
                                 <td>
