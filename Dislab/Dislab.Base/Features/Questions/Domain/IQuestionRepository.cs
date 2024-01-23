@@ -5,11 +5,11 @@ namespace Dislab.Base.Features.Questions.Domain
 {
     public interface IQuestionRepository
     {
-        public bool Insert(InsertQuestionVM model);
-        public void Update(UpdateQuestionVM question);
-        public long Delete(long id);
-        public IEnumerable<AskQuestion> GetAll();
-        public AskQuestion GetByQuestionId(long id);
+        public Task<bool>InsertAsync(InsertQuestionVM model);
+        public Task<string> UpdateAsync(UpdateQuestionVM question);
+        public Task<long> DeleteAsync(long id);
+        public Task<IEnumerable<AskQuestion>> GetAllAsync();
+        public Task<AskQuestion> GetByQuestionIdAsync(long id);
     }
 
 }
