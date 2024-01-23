@@ -13,7 +13,7 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public bool Insert(InsertQuestionVM model)
+        public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var resutl = connection.Execute(sqlQuesy, model);
+                var resutl = await connection.ExecuteAsync(sqlQuesy, model);
                 if (resutl > 0)
                 {
                     return true;
@@ -35,7 +35,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
         }
 
-        public long Delete(long id)
+        public async Task<long> DeleteAsync(long id)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var resutl = connection.Execute(sqlQuery, new { id });
+                var resutl = await connection.ExecuteAsync(sqlQuery, new { id });
                 return resutl;
             }
             catch (Exception exception)
@@ -52,7 +52,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public IEnumerable<AskQuestion> GetAll()
+        public async Task<IEnumerable<AskQuestion>> GetAllAsync()
         {
             try
             {
@@ -60,25 +60,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var questionCollection = new GetAllQuiestionsVM();
-                questionCollection.Questions = connection.Query<AskQuestion>(sqlQuery);
-                return questionCollection.Questions;
-            }
-            catch (Exception exception)
-            {
-                throw new InvalidOperationException(exception.Message, exception);
-            }
-        }
-
-        public AskQuestion GetByQuestionId(long id)
-        {
-            try
-            {
-                var sqlQuery = @"SELECT * FROM AskQuestion WHERE Id = @id";
-
-                using var connection = _context.CreateConnection();
-                connection.Open();
-                var result = connection.QueryFirstOrDefault<AskQuestion>(sqlQuery, new { id });
+                var result = await connection.QueryAsync<AskQuestion>(sqlQuery);
                 return result;
             }
             catch (Exception exception)
@@ -87,7 +69,24 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public void Update(UpdateQuestionVM question)
+        public async Task<AskQuestion> GetByQuestionIdAsync(long id)
+        {
+            try
+            {
+                var sqlQuery = @"SELECT * FROM AskQuestion WHERE Id = @id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<AskQuestion>(sqlQuery, new { id });
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
+        }
+
+        public async Task<string> UpdateAsync(UpdateQuestionVM question)
         {
             try
             {
@@ -95,7 +94,16 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                connection.Execute(sqlQuery, new { question.QuestionTitle, question.QuestionBody, question.Id });
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, question);
+                if(result > 0)
+                {
+                    return "Success";
+                }
+                else
+                {
+                    return "Not Success";
+                }
+                
             }
             catch (Exception exception)
             {
