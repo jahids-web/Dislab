@@ -45,9 +45,9 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetQuestionById(long id)
+        public async Task<IActionResult> GetQuestionById(long id)
         {
-            var question = _askQuestionService.GetByQuestionIdAsync(id);
+            var question = await _askQuestionService.GetByQuestionIdAsync(id);
             return Ok(new
             {
                 IsSuccess = true,
