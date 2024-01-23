@@ -1,6 +1,7 @@
 ﻿using Dislab.Base.Data;
 using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
+using System.Collections.Generic;
 
 namespace Dislab.Base.Services
 {
@@ -14,32 +15,34 @@ namespace Dislab.Base.Services
             _unitOfWork = uniteOfWork;
         }
 
-        public bool Insert(InsertQuestionVM model)
+        public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
-            var result = _unitOfWork.AskQuestionRepository.Insert(model);
+            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(model);
             return result;
         }
 
-        public long Delete(long id)
+        public async Task<long> DeleteAsync(long id)
         {
-            return _unitOfWork.AskQuestionRepository.Delete(id);
-        }
-
-        public GetAllQuiestionsVM GetAll()
-        {
-            var result = new GetAllQuiestionsVM();
-            result.Questions = _unitOfWork.AskQuestionRepository.GetAll();
+            var result = await _unitOfWork.AskQuestionRepository.DeleteAsync(id);
             return result;
         }
 
-        public IEnumerable<AskQuestion> GetByQuestionId(long id)
+        public async Task<IEnumerable<AskQuestion>> GetAllAsync()
         {
-            return _unitOfWork.AskQuestionRepository.GetByQuestionId(id);
+            var result = await _unitOfWork.AskQuestionRepository.GetAllAsync();
+            return result;
         }
 
-        public void Update(UpdateQuestionVM question)
+        public async Task<AskQuestion> GetByQuestionIdAsync(long id)
         {
-            _unitOfWork.AskQuestionRepository.Update(question);
+            var result = await _unitOfWork.AskQuestionRepository.GetByQuestionIdAsync(id);
+            return result;
+        }
+
+        public async Task<string> UpdateAsync(UpdateQuestionVM question)
+        {
+            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(question);
+            return result;
         }
     }
 }
