@@ -15,10 +15,9 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             _askQuestionService = askQuestionService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = new GetAllQuiestionsVM();
-            data = _askQuestionService.GetAll();
+            var data = await _askQuestionService.GetAllAsync();
             return View(data);
         }
 
@@ -32,7 +31,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = _askQuestionService.Insert(model);
+                var result = _askQuestionService.InsertAsync(model);
             }
            
             return RedirectToAction(nameof(Index));
@@ -41,14 +40,14 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         [HttpDelete]
         public IActionResult Delete(long id)
         {
-            _askQuestionService.Delete(id);
+            _askQuestionService.DeleteAsync(id);
             return Ok(new { IsSuccess = true, Message = "Question Deleted Successfully." });
         }
 
         [HttpGet]
         public IActionResult GetQuestionById(long id)
         {
-            var question = _askQuestionService.GetByQuestionId(id);
+            var question = _askQuestionService.GetByQuestionIdAsync(id);
             return Ok(new
             {
                 IsSuccess = true,
@@ -59,7 +58,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
 
         public IActionResult Update(long id)
         {
-           var data = _askQuestionService.GetByQuestionId(id);
+           var data = _askQuestionService.GetByQuestionIdAsync(id);
            return View(data);
         }
 
@@ -68,10 +67,9 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         {
             if(ModelState.IsValid)
             {
-                _askQuestionService.Update(model);
+                _askQuestionService.UpdateAsync(model);
             }
             return RedirectToAction(nameof(Index));
         }
 
-    }
 }
