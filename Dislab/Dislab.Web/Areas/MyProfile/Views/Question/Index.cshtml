@@ -47,9 +47,8 @@
                                 <td>@item.QuestionBody</td>
                                 <td>
                                     <div class="buttons">
-                                        <a href="#" class="btn icon btn-primary">
+                                        <a asp-area="MyProfile" asp-controller="Question" asp-action="Insert" asp-route-id="@item.Id" class="btn icon btn-primary">
                                             Edit
-
                                         </a>
                                         <a onclick="deletePost('@item.Id')" class="btn icon btn-danger">
                                             Delete
