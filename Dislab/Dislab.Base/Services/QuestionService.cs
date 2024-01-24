@@ -39,7 +39,7 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<string> UpdateAsync(UpdateQuestionVM question)
+        public async Task<string> UpdateAsync(AskQuestion question)
         {
             var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(question);
             return result;
