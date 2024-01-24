@@ -86,7 +86,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<string> UpdateAsync(UpdateQuestionVM question)
+        public async Task<string> UpdateAsync(AskQuestion question)
         {
             try
             {
