@@ -33,7 +33,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             {
                 var result = await _askQuestionService.InsertAsync(model);
             }
-           
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -58,18 +58,19 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
 
         public async Task<IActionResult> Update(long id)
         {
-           var data = await _askQuestionService.GetByQuestionIdAsync(id);
-           return View(data);
+            var data = await _askQuestionService.GetByQuestionIdAsync(id);
+            return View(data);
         }
 
         [HttpPost]
         public async Task<IActionResult> Update(UpdateQuestionVM model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-               await _askQuestionService.UpdateAsync(model);
+                await _askQuestionService.UpdateAsync(model);
             }
             return RedirectToAction(nameof(Index));
         }
 
+    }
 }
