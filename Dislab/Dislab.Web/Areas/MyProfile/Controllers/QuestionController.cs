@@ -2,6 +2,7 @@
 using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Dislab.Web.Areas.MyProfile.Controllers
 {
@@ -63,14 +64,24 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateQuestionVM model)
+        public async Task<IActionResult> Update(AskQuestion model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _askQuestionService.UpdateAsync(model);
+                if (ModelState.IsValid)
+                {
+                    await _askQuestionService.UpdateAsync(model);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View(model);
+                }
             }
-            return RedirectToAction(nameof(Index));
+            catch(Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Dislab.Base.Features.Questions.ViewModels.UpdateQuestionVM;
+﻿@model Dislab.Base.Features.Questions.Entities.AskQuestion;
 @{
     ViewData["Title"] = "Update";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -9,12 +9,12 @@
         <div class="col-md-6 m-auto col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Create Question</h4>
+                    <h4 class="card-title">Update Question</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
                         <form class="form form-horizontal novalidate role="form" method="post"
-                              asp-area="MyProfile" asp-controller="Question" asp-action="Insert" asp-antiforgery="true">
+                              asp-area="MyProfile" asp-controller="Question" asp-action="Update" asp-antiforgery="true">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-body">
                                 <div class="row">
@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
                                     </div>
                                 </div>
                             </div>
