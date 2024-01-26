@@ -41,8 +41,16 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
-            await _askQuestionService.DeleteAsync(id);
-            return Ok(new { IsSuccess = true, Message = "Question Deleted Successfully." });
+            try
+            {
+                await _askQuestionService.DeleteAsync(id);
+                return Ok(new { IsSuccess = true, Message = "Question Deleted Successfully." });
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+           
         }
 
         [HttpGet]
