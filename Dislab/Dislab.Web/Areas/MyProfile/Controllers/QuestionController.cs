@@ -44,13 +44,13 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<IActionResult> Delete(long id)
         {
             try
             {
                 await _askQuestionService.DeleteAsync(id);
-                return Ok(new { IsSuccess = true, Message = "Question Deleted Successfully." });
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception exception)
             {
@@ -91,7 +91,6 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                 {
                     return Ok(new
                     {
-                        IsSuccess = false,
                         Message = "Error Message",
                         Data = model
                     });
