@@ -83,7 +83,12 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                 }
                 else
                 {
-                    return View(model);
+                    return Ok(new
+                    {
+                        IsSuccess = false,
+                        Message = "Error Message",
+                        Data = model
+                    });
                 }
             }
             catch(Exception exception)
