@@ -30,12 +30,18 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         [HttpPost]
         public async Task<IActionResult> Insert(InsertQuestionVM model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _askQuestionService.InsertAsync(model);
+                if (ModelState.IsValid)
+                {
+                    var result = await _askQuestionService.InsertAsync(model);
+                }
+                return RedirectToAction(nameof(Index));
             }
-
-            return RedirectToAction(nameof(Index));
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpDelete]
