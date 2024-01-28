@@ -1,3 +1,4 @@
+using Dislab.Base.Services;
 using Dislab.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,21 +7,21 @@ namespace Dislab.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IQuestionService _askQuestionService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IQuestionService askQuestionService)
         {
-            _logger = logger;
+            _askQuestionService = askQuestionService;
         }
-
         public IActionResult Index()
         {
             return View();
         } 
         
-        public IActionResult AllQuestion()
+        public async Task<IActionResult> AllQuestion()
         {
-            return View();
+            var data = await _askQuestionService.GetAllAsync();
+            return View(data);
         }    
         
         public IActionResult AskQuestion()
