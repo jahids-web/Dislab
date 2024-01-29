@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dislab.Base.DbContexts;
+using Dislab.Base.Features.Questions.DTOs;
 using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
 
@@ -13,7 +14,7 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public async Task<bool> InsertAsync(InsertQuestionVM model)
+        public async Task<bool> InsertAsync(InsertQuestionDTO dto)
         {
             try
             {
@@ -21,7 +22,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var resutl = await connection.ExecuteAsync(sqlQuesy, model);
+                var resutl = await connection.ExecuteAsync(sqlQuesy, dto);
                 if (resutl > 0)
                 {
                     return true;
@@ -86,7 +87,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<string> UpdateAsync(AskQuestion question)
+        public async Task<string> UpdateAsync(UpdateQuestionDTO dto)
         {
             try
             {
@@ -94,7 +95,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, question);
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, dto);
                 if(result > 0)
                 {
                     return "Success";
