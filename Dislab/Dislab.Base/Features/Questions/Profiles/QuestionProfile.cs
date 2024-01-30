@@ -8,17 +8,19 @@ namespace Dislab.Base.Features.Questions.Profiles
     {
         public QuestionProfile()
         {
-            CreateMap<InsertQuestionVM, InsertQuestionDTO>();
+
+            CreateMap<InsertQuestionVM, InsertQuestionDTO>().ReverseMap();
+            CreateMap<UpdateQuestionVM, UpdateQuestionDTO>().ReverseMap();
 
             //.ForMember(
             //        dest => dest.QuestionTitle,
             //        opt => opt.MapFrom(src => $"{src.QuestionTitle}")
             //    )
             //.ForMember(
-            //        dest => dest.QuestionTitle,
-            //        opt => opt.MapFrom(src => $"{src.QuestionTitle}")
+            //        dest => dest.QuestionBody,
+            //        opt => opt.MapFrom(src => $"{src.QuestionBody}")
             //    );
         }
-        
+
     }
 }
