@@ -28,8 +28,12 @@ namespace Dislab.Web
                 containerBuilder.RegisterModule(new MembershipModule());
             });
 
+            //AutoMapper
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
             // Add services to the container.
-           
+
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
