@@ -1,8 +1,9 @@
-﻿using Dislab.Base.Features.Questions.Entities;
+﻿using AutoMapper;
+using Dislab.Base.Features.Questions.DTOs;
+using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Dislab.Web.Areas.MyProfile.Controllers
 {
@@ -10,7 +11,6 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
     public class QuestionController : Controller
     {
         private readonly IQuestionService _askQuestionService;
-
         public QuestionController(IQuestionService askQuestionService)
         {
             _askQuestionService = askQuestionService;
@@ -49,6 +49,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         {
             try
             {
+                ViewData["DeleteMessage"] = "Your data is Deleted Successfully!";
                 await _askQuestionService.DeleteAsync(id);
                 return RedirectToAction(nameof(Index));
             }
@@ -78,7 +79,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(AskQuestion model)
+        public async Task<IActionResult> Update(UpdateQuestionVM model)
         {
             try
             {
