@@ -1,4 +1,6 @@
-﻿using Dislab.Base.Data;
+﻿using AutoMapper;
+using Dislab.Base.Data;
+using Dislab.Base.Features.Questions.DTOs;
 using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
 using System.Collections.Generic;
@@ -6,18 +8,23 @@ using System.Collections.Generic;
 namespace Dislab.Base.Services
 {
 
-    public class QuestionService : IQuestionService
+    public class QuestionService : IQuestionService 
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public QuestionService(IUnitOfWork uniteOfWork)
+        public QuestionService(IUnitOfWork uniteOfWork,
+            IMapper mapper)
         {
             _unitOfWork = uniteOfWork;
+            _mapper = mapper;
         }
 
         public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
-            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(model);
+            var mappedObject = _mapper.Map<InsertQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(mappedObject);
+
             return result;
         }
 
@@ -29,6 +36,7 @@ namespace Dislab.Base.Services
 
         public async Task<IEnumerable<AskQuestion>> GetAllAsync()
         {
+
             var result = await _unitOfWork.AskQuestionRepository.GetAllAsync();
             return result;
         }
@@ -39,9 +47,10 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<string> UpdateAsync(AskQuestion question)
+        public async Task<string> UpdateAsync(UpdateQuestionVM model)
         {
-            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(question);
+            var mappedObject = _mapper.Map<UpdateQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(mappedObject);
             return result;
         }
     }
