@@ -9,8 +9,8 @@ namespace Dislab.Base.Features.Questions.Profiles
         public QuestionProfile()
         {
 
-            CreateMap<InsertQuestionVM, InsertQuestionDTO>().ReverseMap();
-            CreateMap<UpdateQuestionVM, UpdateQuestionDTO>().ReverseMap();
+            CreateMap<InsertQuestionDTO, InsertQuestionVM>().ReverseMap();
+            //CreateMap<UpdateQuestionVM, UpdateQuestionDTO>().ReverseMap();
 
             //.ForMember(
             //        dest => dest.QuestionTitle,
@@ -20,7 +20,23 @@ namespace Dislab.Base.Features.Questions.Profiles
             //        dest => dest.QuestionBody,
             //        opt => opt.MapFrom(src => $"{src.QuestionBody}")
             //    );
+
+            //ConfigureMappings();
+
+
         }
+
+        //private void ConfigureMappings()
+        //{
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<InsertQuestionVM, InsertQuestionDTO>().ReverseMap();
+        //    });
+
+        //    IMapper mapper = config.CreateMapper();
+
+        //    mapper.Map<InsertQuestionDTO, InsertQuestionVM>(new InsertQuestionDTO());
+        //}
 
     }
 }
