@@ -14,7 +14,7 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public async Task<bool> InsertAsync(InsertQuestionDTO dto)
+        public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var resutl = await connection.ExecuteAsync(sqlQuesy, dto);
+                var resutl = await connection.ExecuteAsync(sqlQuesy, model);
                 if (resutl > 0)
                 {
                     return true;
@@ -87,7 +87,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<string> UpdateAsync(UpdateQuestionDTO dto)
+        public async Task<string> UpdateAsync(UpdateQuestionVM model)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, dto);
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
                 if(result > 0)
                 {
                     return "Success";
