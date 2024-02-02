@@ -35,9 +35,16 @@
                         <span class="view-text d-block fs-13 lh-18">views</span>
                     </div>
                 </div>
-                <div class="media-body ">
+                <div class="media-body">
                     <h5 class="mb-2 fw-medium">@item.QuestionTitle</h5>
-                    <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody</p>
+                    @if (item.QuestionBody.Length > 120 )
+                    {
+                        <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody.Remove(120)</p>
+                    }
+                    else
+                    {
+                     <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody</p>
+                    }
                     <div class="tags">
                         <a href="#" class="tag-link">javascript</a>
                         <a href="#" class="tag-link">bootstrap-4</a>
