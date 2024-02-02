@@ -1,8 +1,10 @@
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Dislab.Base;
 using Dislab.Membership;
 using Dislab.Web.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -29,8 +31,8 @@ namespace Dislab.Web
             });
 
             //AutoMapper
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+            //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddAutoMapper(Assembly.Load(assemblyName));
 
             // Add services to the container.
 
