@@ -22,8 +22,8 @@ namespace Dislab.Base.Services
 
         public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
-            var mappedObject = _mapper.Map<InsertQuestionDTO>(model);
-            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(mappedObject);
+            //var mappedObject =  _mapper.Map<InsertQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(model);
 
             return result;
         }
@@ -49,8 +49,8 @@ namespace Dislab.Base.Services
 
         public async Task<string> UpdateAsync(UpdateQuestionVM model)
         {
-            var mappedObject = _mapper.Map<UpdateQuestionDTO>(model);
-            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(mappedObject);
+            //var mappedObject = _mapper.Map<UpdateQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(model);
             return result;
         }
     }
