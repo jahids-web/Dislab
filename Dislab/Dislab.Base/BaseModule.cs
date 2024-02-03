@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Dislab.Base.Data;
 using Dislab.Base.DbContexts;
+using Dislab.Base.Features.Answer.Domain;
+using Dislab.Base.Features.Answer.Entities;
 using Dislab.Base.Features.Questions.Domain;
 using Dislab.Base.Services;
 
@@ -34,6 +36,12 @@ namespace Dislab.Base
 
             builder.RegisterType<QuestionService>().As<IQuestionService>()
               .InstancePerLifetimeScope();
+
+            builder.RegisterType<AnswerRepository>().As<IAnswerRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<AnswerService>().As<IAnswerService>()
+             .InstancePerLifetimeScope();
 
             base.Load(builder);
         }
