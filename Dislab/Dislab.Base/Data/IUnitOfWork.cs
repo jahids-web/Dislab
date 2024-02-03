@@ -1,5 +1,4 @@
-﻿using Dislab.Base.Features.Answer.Domain;
-using Dislab.Base.Features.Answer.Entities;
+﻿using Dislab.Base.Features.Answer.Entities;
 using Dislab.Base.Features.Questions.Domain;
 
 namespace Dislab.Base.Data
