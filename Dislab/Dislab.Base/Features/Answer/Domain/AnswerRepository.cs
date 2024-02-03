@@ -1,16 +1,15 @@
 ﻿using Dislab.Base.DbContexts;
-using Dislab.Base.Features.Answer.Entities;
 using Dislab.Base.Features.Answer.ViewModel;
 
-namespace Dislab.Base.Features.Answer.Domain
+namespace Dislab.Base.Features.Answer.Entities
 {
     public class AnswerRepository : IAnswerRepository
     {
-        private readonly IDapperContext _dapperContext;
+        private readonly IDapperContext _context;
 
-        public AnswerRepository(IDapperContext dapperContext)
+        public AnswerRepository(IDapperContext context)
         {
-            _dapperContext = dapperContext;
+            _context = context;
         }
 
         public Task<long> DeleteAsync(long id)
@@ -18,12 +17,12 @@ namespace Dislab.Base.Features.Answer.Domain
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Entities.Answer>> GetAllAsync()
+        public Task<IEnumerable<Answer>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Entities.Answer> GetByQuestionIdAsync(long id)
+        public Task<Answer> GetByAnswerIdAsync(long id)
         {
             throw new NotImplementedException();
         }
