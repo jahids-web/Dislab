@@ -27,7 +27,7 @@ namespace Dislab.Base.Services
             throw new NotImplementedException();
         }
 
-        public Task<Answer> GetByQuestionIdAsync(long id)
+        public Task<Answer> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }
