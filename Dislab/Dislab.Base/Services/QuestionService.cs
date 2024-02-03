@@ -22,8 +22,8 @@ namespace Dislab.Base.Services
 
         public async Task<bool> InsertAsync(InsertQuestionVM model)
         {
-            //var mappedObject =  _mapper.Map<InsertQuestionDTO>(model);
-            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(model);
+            var mappedObject =  _mapper.Map<InsertQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.InsertAsync(mappedObject);
 
             return result;
         }

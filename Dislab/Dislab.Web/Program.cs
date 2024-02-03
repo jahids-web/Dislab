@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Dislab.Base;
+using Dislab.Base.Features.Questions.Profiles;
 using Dislab.Membership;
 using Dislab.Web.Data;
 using Microsoft.AspNetCore.Hosting;
@@ -28,14 +29,9 @@ namespace Dislab.Web
                 containerBuilder.RegisterModule(new WebModule());
                 containerBuilder.RegisterModule(new BaseModule(connectionString, assemblyName));
                 containerBuilder.RegisterModule(new MembershipModule());
-            });
-
-            //AutoMapper
-            //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            builder.Services.AddAutoMapper(Assembly.Load(assemblyName));
+            });            
 
             // Add services to the container.
-
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -43,6 +39,10 @@ namespace Dislab.Web
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            //AutoMapper
+            //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddAutoMapper(typeof(QuestionProfile));
 
             var app = builder.Build();
 

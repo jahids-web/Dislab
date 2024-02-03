@@ -9,8 +9,6 @@ namespace Dislab.Base.Features.Questions.DTOs
 {
     public class InsertQuestionDTO
     {
-        public long Id { get; set; }
-
         public string? QuestionTitle { get; set; }
 
         public string? QuestionBody { get; set; }
