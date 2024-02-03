@@ -8,6 +8,6 @@ namespace Dislab.Base.Features.Answer.Entities
         public Task<string> UpdateAsync(UpdateAnswerVM model);
         public Task<long> DeleteAsync(long id);
         public Task<IEnumerable<Answer>> GetAllAsync();
-        public Task<Answer> GetByQuestionIdAsync(long id);
+        public Task<Answer> GetByAnswerIdAsync(long id);
     }
 }
