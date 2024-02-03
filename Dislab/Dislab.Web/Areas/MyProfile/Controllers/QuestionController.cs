@@ -11,12 +11,10 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
     public class QuestionController : Controller
     {
         private readonly IQuestionService _askQuestionService;
-        //private readonly IMapper _mapper;
 
-        public QuestionController(IQuestionService askQuestionService /*IMapper mapper*/)
+        public QuestionController(IQuestionService askQuestionService)
         {
             _askQuestionService = askQuestionService;
-            //_mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
@@ -38,7 +36,6 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                 if (ModelState.IsValid)
                 {
                     var result = await _askQuestionService.InsertAsync(model);
-                   //_mapper.Map<InsertQuestionDTO>(result);
                 }
                 return RedirectToAction(nameof(Index));
             }

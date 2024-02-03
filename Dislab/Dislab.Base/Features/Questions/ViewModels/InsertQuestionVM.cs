@@ -4,8 +4,6 @@ namespace Dislab.Base.Features.Questions.ViewModels
 {
     public class InsertQuestionVM
     {
-        public long Id { get; set; }
-
         [Required]
         public string? QuestionTitle { get; set; }
 

@@ -76,6 +76,9 @@
                             <li class="is-mega-menu">
                                     <a asp-area=" " asp-controller="Home" asp-action="QuestionDetails"> Question Details</a>
                             </li>
+                                <li class="is-mega-menu">
+                                    <a asp-area="MyProfile" asp-controller="Question" asp-action="Index"> My Profile</a>
+                                </li>
                          
                         </ul><!-- end ul -->
                     </nav><!-- end main-menu -->
@@ -87,7 +90,7 @@
                     </form>
                     <div class="nav-right-button">
                         <a href="#" class="btn theme-btn theme-btn-outline mr-2" data-toggle="modal" data-target="#loginModal"><i class="la la-sign-in mr-1"></i> Login</a>
-                        <a href="#" class="btn theme-btn" data-toggle="modal" data-target="#signUpModal"><i class="la la-user mr-1"></i> Sign up</a>
+                        @* <a href="#" class="btn theme-btn" data-toggle="modal" data-target="#signUpModal"><i class="la la-user mr-1"></i> Sign up</a> *@
                     </div><!-- end nav-right-button -->
                 </div><!-- end menu-wrapper -->
             </div><!-- end col-lg-10 -->

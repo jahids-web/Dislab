@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dislab.Base.DbContexts;
+using Dislab.Base.Features.Questions.DTOs;
 using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
 
@@ -13,7 +14,7 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public async Task<bool> InsertAsync(InsertQuestionVM model)
+        public async Task<bool> InsertAsync(InsertQuestionDTO model)
         {
             try
             {

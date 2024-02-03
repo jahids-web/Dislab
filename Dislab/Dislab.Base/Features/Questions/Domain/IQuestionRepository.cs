@@ -6,7 +6,7 @@ namespace Dislab.Base.Features.Questions.Domain
 {
     public interface IQuestionRepository
     {
-        public Task<bool>InsertAsync(InsertQuestionVM model);
+        public Task<bool>InsertAsync(InsertQuestionDTO model);
         public Task<string> UpdateAsync(UpdateQuestionVM model);
         public Task<long> DeleteAsync(long id);
         public Task<IEnumerable<AskQuestion>> GetAllAsync();
