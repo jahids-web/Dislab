@@ -1,6 +1,9 @@
-﻿using Dislab.Base.Data;
+﻿using AutoMapper;
+using Dislab.Base.Data;
+using Dislab.Base.Features.Answer.DTOS;
 using Dislab.Base.Features.Answer.Entities;
 using Dislab.Base.Features.Answer.ViewModel;
+using Dislab.Base.Features.Questions.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,34 +15,48 @@ namespace Dislab.Base.Services
     public class AnswerService : IAnswerService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public AnswerService(IUnitOfWork unitOfWork) 
+        private readonly IMapper _mapper;
+
+        public AnswerService(IUnitOfWork unitOfWork , IMapper mapper) 
         { 
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public Task<long> DeleteAsync(long id)
+        public async Task<bool> InsertAsync(InsertAnswerVM model)
         {
-            throw new NotImplementedException();
+            var mappedObject = _mapper.Map<InsertAnswerDTO>(model);
+            var result = await _unitOfWork.AnswerRepository.InsertAsync(mappedObject);
+            return result;
         }
 
-        public Task<IEnumerable<Answer>> GetAllAsync()
+        public async Task<string> UpdateAsync(UpdateAnswerVM model)
         {
-            throw new NotImplementedException();
+            var mappedObject = _mapper.Map<UpdateAnswerDTO>(model);
+            var result = await _unitOfWork.AnswerRepository.UpdateAsync(mappedObject);
+            return result;
         }
 
-        public Task<Answer> GetByIdAsync(long id)
+        public async Task<IEnumerable<Answer>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var result = await _unitOfWork.AnswerRepository.GetAllAsync();
+            return result;
         }
 
-        public Task<bool> InsertAsync(InsertAnswerVM model)
+        public async Task<Answer> GetByIdAsync(long id)
         {
-            throw new NotImplementedException();
+            var result = await _unitOfWork.AnswerRepository.GetByIdAsync(id);
+            return result;
+
         }
 
-        public Task<string> UpdateAsync(UpdateAnswerVM model)
+        public async Task<long> DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            var result = await _unitOfWork.AnswerRepository.DeleteAsync(id);
+            return result;
         }
+
+      
+
     }
 }
