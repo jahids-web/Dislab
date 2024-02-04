@@ -87,7 +87,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<string> UpdateAsync(UpdateQuestionVM model)
+        public async Task<string> UpdateAsync(UpdateQuestionDTO model)
         {
             try
             {
