@@ -43,6 +43,7 @@ namespace Dislab.Base.Services
 
         public async Task<AskQuestion> GetByQuestionIdAsync(long id)
         {
+            //var mappedObject = _mapper.Map<GetQuitionByIdDTO>(id);
             var result = await _unitOfWork.AskQuestionRepository.GetByQuestionIdAsync(id);
             return result;
         }
