@@ -49,8 +49,8 @@ namespace Dislab.Base.Services
 
         public async Task<string> UpdateAsync(UpdateQuestionVM model)
         {
-            //var mappedObject = _mapper.Map<UpdateQuestionDTO>(model);
-            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(model);
+            var mappedObject = _mapper.Map<UpdateQuestionDTO>(model);
+            var result = await _unitOfWork.AskQuestionRepository.UpdateAsync(mappedObject);
             return result;
         }
     }
