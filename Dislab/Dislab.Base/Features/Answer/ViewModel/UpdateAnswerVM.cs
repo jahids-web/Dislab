@@ -8,5 +8,7 @@ namespace Dislab.Base.Features.Answer.ViewModel
 {
     public class UpdateAnswerVM
     {
+        public long QuestionId { get; set; }
+        public string? AnswerBody { get; set; }
     }
 }
