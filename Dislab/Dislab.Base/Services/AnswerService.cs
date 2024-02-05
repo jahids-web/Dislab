@@ -30,33 +30,24 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<string> UpdateAsync(UpdateAnswerVM model)
+        public Task<long> DeleteAsync(long id)
         {
-            var mappedObject = _mapper.Map<UpdateAnswerDTO>(model);
-            var result = await _unitOfWork.AnswerRepository.UpdateAsync(mappedObject);
-            return result;
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Answer>> GetAllAsync()
+        public Task<IEnumerable<Answer>> GetAllAsync()
         {
-            var result = await _unitOfWork.AnswerRepository.GetAllAsync();
-            return result;
+            throw new NotImplementedException();
         }
 
-        public async Task<Answer> GetByIdAsync(long id)
+        public Task<Answer> GetByIdAsync(long id)
         {
-            var result = await _unitOfWork.AnswerRepository.GetByIdAsync(id);
-            return result;
-
+            throw new NotImplementedException();
         }
 
-        public async Task<long> DeleteAsync(long id)
+        public Task<string> UpdateAsync(UpdateAnswerVM model)
         {
-            var result = await _unitOfWork.AnswerRepository.DeleteAsync(id);
-            return result;
+            throw new NotImplementedException();
         }
-
-      
-
     }
 }
