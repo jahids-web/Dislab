@@ -1,8 +1,43 @@
-﻿
+﻿@model Dislab.Base.Features.Answer.ViewModel.InsertAnswerVM;
 @{
     ViewData["Title"] = "Insert";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Insert</h1>
+<section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-md-6 m-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Create Answer</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-horizontal novalidate role="form" method="post"
+                              asp-area="MyProfile" asp-controller="Answer" asp-action="Insert" asp-antiforgery="true">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-body">
+                                <div class="row">
+                                    <input hidden asp-for="QuestionId">
+                                   @*  <div class="col-md-12">
+                                        <label asp-for="QuestionId" class="mb-2 fw-bold">QuestionId</label>
+                                        <input asp-for="QuestionId" type="text" class="form-control mb-4" name="QuestionId"
+                                               placeholder="Question Id">
+                                    </div> *@
+                                    <div class="col-md-12">
+                                        <label class="mb-2 fw-bold" asp-for="AnswerBody">Question Body</label>
+                                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-sm-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mt-3">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
