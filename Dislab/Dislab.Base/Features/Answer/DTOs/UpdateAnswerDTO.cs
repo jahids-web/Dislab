@@ -8,6 +8,7 @@ namespace Dislab.Base.Features.Answer.DTOS
 {
     public class UpdateAnswerDTO
     {
+        public long QuestionId { get; set; }
         public string? AnswerBody { get; set; }
     }
 }
