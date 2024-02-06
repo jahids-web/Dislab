@@ -27,11 +27,12 @@ namespace Dislab.Web.Controllers
         public IActionResult AskQuestion()
         {
             return View();
-        }  
-        
-        public IActionResult QuestionDetails()
+        }
+
+        public async Task<IActionResult> QuestionDetails(long id)
         {
-            return View();
+            var data = await _askQuestionService.GetByQuestionIdAsync(id);
+            return View(data);
         }
        
 
