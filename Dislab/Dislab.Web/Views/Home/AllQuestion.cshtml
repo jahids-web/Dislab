@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <h5 class="mb-2 fw-medium">@item.QuestionTitle</h5>
-                    @if (item.QuestionBody.Length > 120 )
+                    <h5 class="mb-2 fw-medium"><a asp-area="" asp-controller="Home" asp-action="QuestionDetails" asp-route-id="@item.Id">@item.QuestionTitle</a> </h5>
+                    @if (item.QuestionBody?.Length > 120 )
                     {
                         <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody.Remove(120)</p>
                     }
