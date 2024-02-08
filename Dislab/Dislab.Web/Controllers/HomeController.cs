@@ -13,9 +13,10 @@ namespace Dislab.Web.Controllers
         {
             _askQuestionService = askQuestionService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var data = await _askQuestionService.GetAllAsync();
+            return View(data);
         } 
         
         public async Task<IActionResult> AllQuestion()
