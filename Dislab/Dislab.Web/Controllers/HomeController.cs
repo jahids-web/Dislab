@@ -1,3 +1,4 @@
+using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Dislab.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,23 @@ namespace Dislab.Web.Controllers
         public IActionResult AskQuestion()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AskQuestion(InsertQuestionVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = await _askQuestionService.InsertAsync(model);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public async Task<IActionResult> QuestionDetails(long id)
