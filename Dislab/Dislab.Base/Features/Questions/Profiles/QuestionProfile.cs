@@ -20,8 +20,8 @@ namespace Dislab.Base.Features.Questions.Profiles
             CreateMap<GetQuitionByIdVM, GetQuitionByIdDTO>()
                .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
 
-          //  CreateMap<PostQuestionDetailesVM, PostQuestionDetailesDTO>()
-          //.ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
+            CreateMap<PostQuestionDetailesVM, PostQuestionDetailesDTO>()
+          .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
         }
     }
 }
