@@ -53,7 +53,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<IEnumerable<AskQuestion>> GetAllAsync()
+        public async Task<IEnumerable<Question>> GetAllAsync()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryAsync<AskQuestion>(sqlQuery);
+                var result = await connection.QueryAsync<Question>(sqlQuery);
                 return result;
             }
             catch (Exception exception)
@@ -70,7 +70,7 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<AskQuestion> GetByQuestionIdAsync(long id)
+        public async Task<QuestionDetailsDTO> GetByQuestionIdAsync(long id)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Dislab.Base.Features.Questions.Domain
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryFirstOrDefaultAsync<AskQuestion>(sqlQuery, new { id });
+                var result = await connection.QueryFirstOrDefaultAsync<QuestionDetailsDTO>(sqlQuery, new { id });
                 return result;
             }
             catch (Exception exception)
