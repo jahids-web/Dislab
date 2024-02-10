@@ -14,7 +14,7 @@ namespace Dislab.Base.Services
         public Task<bool> InsertAsync(InsertQuestionVM model);
         public Task<string> UpdateAsync(UpdateQuestionVM model);
         public Task<long> DeleteAsync(long id);
-        public Task<IEnumerable<AskQuestion>> GetAllAsync();
-        public Task<AskQuestion> GetByQuestionIdAsync(long id);
+        public Task<IEnumerable<Question>> GetAllAsync();
+        public Task<QuestionDetailsVM> GetByQuestionIdAsync(long id);
     }
 }
