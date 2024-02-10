@@ -9,6 +9,6 @@ namespace Dislab.Base.Features.Questions.DTOs
 {
     public class GetQuitionByIdDTO
     {
-        public AskQuestion Question { get; set; }
+        public Question? Question { get; set; }
     }
 }
