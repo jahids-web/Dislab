@@ -34,18 +34,18 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<IEnumerable<AskQuestion>> GetAllAsync()
+        public async Task<IEnumerable<Question>> GetAllAsync()
         {
 
             var result = await _unitOfWork.AskQuestionRepository.GetAllAsync();
             return result;
         }
 
-        public async Task<AskQuestion> GetByQuestionIdAsync(long id)
+        public async Task<QuestionDetailsVM> GetByQuestionIdAsync(long id)
         {
-            //var mappedObject = _mapper.Map<GetQuitionByIdDTO>(id);
             var result = await _unitOfWork.AskQuestionRepository.GetByQuestionIdAsync(id);
-            return result;
+            var mappedObject = _mapper.Map<QuestionDetailsVM>(result);
+            return mappedObject;
         }
 
         public async Task<string> UpdateAsync(UpdateQuestionVM model)
