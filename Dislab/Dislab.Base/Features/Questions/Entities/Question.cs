@@ -2,9 +2,9 @@
 
 namespace Dislab.Base.Features.Questions.Entities
 {
-    public class AskQuestion
+    public class Question
     {
-        [Key]
+      
         public long Id { get; set; }
         public string? QuestionTitle { get; set; }
         public string? QuestionBody { get; set; }
