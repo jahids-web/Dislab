@@ -1,4 +1,5 @@
 ﻿using Dislab.Base.Features.Answer.ViewModel;
+using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,14 +26,15 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert(InsertAnswerVM model)
+        public async Task<IActionResult> Insert(QuestionDetailsVM questionDetailsModel)
         {
-            //model.QuestionId = 0;
+           
             try
             {
                 if(ModelState.IsValid)
                 {
-                    var result = await _answerService.InsertAsync(model);
+                    var model = questionDetailsModel.GetAnswerVM();
+                    await _answerService.InsertAsync(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
