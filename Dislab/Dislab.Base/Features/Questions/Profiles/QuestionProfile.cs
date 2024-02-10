@@ -22,6 +22,9 @@ namespace Dislab.Base.Features.Questions.Profiles
 
             CreateMap<PostQuestionDetailesVM, PostQuestionDetailesDTO>()
           .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
+
+            CreateMap<QuestionDetailsVM, QuestionDetailsDTO>().ReverseMap();
+          
         }
     }
 }
