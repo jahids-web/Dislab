@@ -4,6 +4,6 @@ namespace Dislab.Base.Features.Questions.ViewModels
 {
     public class GetAllQuiestionsVM
     {
-        public IEnumerable<AskQuestion>? Questions { get; set; }
+        public IEnumerable<Question>? Questions { get; set; }
     }
 }
