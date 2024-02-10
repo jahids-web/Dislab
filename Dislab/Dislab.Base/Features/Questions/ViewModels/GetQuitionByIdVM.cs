@@ -4,6 +4,6 @@ namespace Dislab.Base.Features.Questions.ViewModels
 {
     public class GetQuitionByIdVM
     {
-        public AskQuestion? Question { get; set; }
+        public Question? Question { get; set; }
     }
 }
