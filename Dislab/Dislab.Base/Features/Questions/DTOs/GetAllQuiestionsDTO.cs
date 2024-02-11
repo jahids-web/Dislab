@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Dislab.Base.Features.Questions.DTOs
 {
-    public class GetQuitionByIdDTO
+    public class GetAllQuiestionsDTO
     {
-        public Question? Question { get; set; }
+        public IEnumerable<Question>? Questions { get; set; }
     }
 }
