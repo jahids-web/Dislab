@@ -1,4 +1,4 @@
-﻿@model Dislab.Base.Features.Answer.Entities.Answer;
+﻿@model Dislab.Base.Features.Questions.ViewModels.QuestionDetailsVM;
 @{
     ViewData["Title"] = "Insert";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -18,7 +18,7 @@
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-body">
                                 <div class="row">
-                                    <input hidden asp-for="Id">
+                                    <input name="QuestionId" hidden asp-for="Id">
                                     <div class="col-md-12">
                                         <label class="mb-2 fw-bold" asp-for="AnswerBody">Question Body</label>
                                         <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
