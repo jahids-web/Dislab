@@ -1,5 +1,4 @@
-﻿@model Dislab.Base.Features.Questions.Entities.AskQuestion;
-@* @model Dislab.Base.Features.Answer.Entities.Answer; *@
+﻿@model Dislab.Base.Features.Questions.ViewModels.QuestionDetailsVM;
 @{
     ViewData["Title"] = "QuestionDetails";
     Layout = "~/Views/Shared/_QuestionDetailsLayout.cshtml";
@@ -51,6 +50,8 @@
                     </div>
                 </div><!-- end subheader-actions -->
             </div><!-- end subheader -->
+            <!-- Start loop answer-wrap -->
+          
             <div class="answer-wrap d-flex">
                 <div class="votes votes-styled w-auto">
                     <div id="vote2" class="upvotejs">
@@ -61,37 +62,16 @@
                     </div>
                 </div><!-- end votes -->
                 <div class="answer-body-wrap flex-grow-1">
-                    <div class="answer-body">
-                        <p>Since you're using an <code class="code">arrow-function</code>, <code class="code">this</code> does not refer to the <code class="code">button</code>:</p>
-                        <pre class="code-block custom-scrollbar-styled">
-<code>$(<span class="code-string">"#size-click"</span>).click(<span class="code-function"><span class="code-keyword">function</span>() </span>{
-                        <span class="code-keyword">var</span> prodId = $(<span class="code-built-in">this</span>).attr(<span class="code-string">"data-productId"</span>);
-                        <span class="code-built-in">console</span>.log(<span class="code-string">'this is prodId'</span>);
-                        <span class="code-built-in">console</span>.log(prodId);
-});</code></pre>
-                        <pre class="code-block custom-scrollbar-styled"><code><span class="code-tag">&lt;<span class="code-name">script</span> <span class="code-attr">src</span>=<span class="code-string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"</span>&gt;</span><span class="code-tag">&lt;/<span class="code-name">script</span>&gt;</span>
+                            
+                        <div class="answer-body">
+                            <p>Since you're using an <code class="code">arrow-function</code>, <code class="code">this</code> does not refer to the <code class="code">button</code>:</p>
+                            
+                            <pre class="code-block custom-scrollbar-styled">
+                               <p>@Html.DisplayFor(x => x.AnswerBody)</p>
+                            </pre>
 
-<span class="code-tag">&lt;<span class="code-name">button</span>
-                        <span class="code-attr">class</span>=<span class="code-string">"btn btn-solid navigate"</span>
-                        <span class="code-attr">value</span>=<span class="code-string">"2"</span>
-                        <span class="code-attr">data-productId</span>=<span class="code-string">"1"</span>
-                        <span class="code-attr">id</span>=<span class="code-string">"size-click"</span>
-&gt;</span>Next<span class="code-tag">&lt;/<span class="code-name">button</span>&gt;</span></code></pre>
-                        <p>If you still want to use it, you can use the <code class="code">event</code> passed to the function:</p>
-                        <pre class="code-block custom-scrollbar-styled"><code>$(<span class="code-string">"#size-click"</span>).click(<span class="code-function"><span class="code-params">e</span> =&gt;</span> {
-                        <span class="code-keyword">var</span> prodId = $(e.currentTarget).attr(<span class="code-string">"data-productId"</span>);
-                        <span class="code-built-in">console</span>.log(<span class="code-string">'this is prodId'</span>);
-                        <span class="code-built-in">console</span>.log(prodId);
-});</code></pre>
-                        <pre class="code-block custom-scrollbar-styled"><code><span class="code-tag">&lt;<span class="code-name">script</span> <span class="code-attr">src</span>=<span class="code-string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"</span>&gt;</span><span class="code-tag">&lt;/<span class="code-name">script</span>&gt;</span>
-
-<span class="code-tag">&lt;<span class="code-name">button</span>
-                        <span class="code-attr">class</span>=<span class="code-string">"btn btn-solid navigate"</span>
-                        <span class="code-attr">value</span>=<span class="code-string">"2"</span>
-                        <span class="code-attr">data-productId</span>=<span class="code-string">"1"</span>
-                        <span class="code-attr">id</span>=<span class="code-string">"size-click"</span>
-&gt;</span>Next<span class="code-tag">&lt;/<span class="code-name">button</span>&gt;</span></code></pre>
-                    </div><!-- end answer-body -->
+                        </div><!-- end answer-body -->
+                 
                     <div class="question-post-user-action">
                         <div class="post-menu">
                             <div class="btn-group">
@@ -228,7 +208,9 @@
                         </div>
                     </div><!-- end comments-wrap -->
                 </div><!-- end answer-body-wrap -->
-            </div><!-- end answer-wrap -->
+            </div>
+
+            <!-- end answer-wrap -->
             <div class="subheader">
                 <div class="subheader-title">
                     <h3 class="fs-16">Your Answer</h3>
@@ -243,7 +225,8 @@
                     <div class="input-box">
                         <label class="fs-14 text-black lh-20 fw-medium">Body</label>
                         <div class="form-group">
-                            <textarea  class="form-control form--control form-control-sm fs-13 user-text-editor" name="" rows="6" placeholder="Your answer here...">Your answer here...</textarea>
+                            <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control form--control form-control-sm fs-13 user-text-editor"
+                                       rows="6" placeholder="Your answer here...">Your answer here...</textarea>
                         </div>
                     </div>
                 @*     <div class="input-box">
