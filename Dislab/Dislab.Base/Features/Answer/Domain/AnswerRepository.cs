@@ -1,7 +1,9 @@
 ﻿using Dapper;
 using Dislab.Base.DbContexts;
+using Dislab.Base.Features.Answer.DTOs;
 using Dislab.Base.Features.Answer.DTOS;
 using Dislab.Base.Features.Answer.ViewModel;
+using Dislab.Base.Features.Questions.DTOs;
 using Dislab.Base.Features.Questions.Entities;
 using System;
 
@@ -37,24 +39,68 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public Task<long> DeleteAsync(long id)
+        public async Task<long> DeleteAsync(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Answer>> GetAllAsync()
+        public async Task<IEnumerable<Answer>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var sqlQuery = @"SELECT * FROM Answer";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryAsync<Answer>(sqlQuery);
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
         }
 
-        public Task<Answer> GetByIdAsync(long id)
+        public async Task<GetAnswerByIdDTO> GetAnswerByIdAsync(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var sqlQuery = @"SELECT * FROM Answer WHERE Id = @id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<GetAnswerByIdDTO>(sqlQuery, new { id });
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
         }
 
-        public Task<string> UpdateAsync(UpdateAnswerDTO model)
+        public async Task<string> UpdateAsync(GetAnswerByIdDTO model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var sqlQuery = @"UPDATE Answer SET AnswerBody = @AnswerBody WHERE Id = @Id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
+                if (result > 0)
+                {
+                    return "Success";
+                }
+                else
+                {
+                    return "Not Success";
+                }
+
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
         }
     }
 }
