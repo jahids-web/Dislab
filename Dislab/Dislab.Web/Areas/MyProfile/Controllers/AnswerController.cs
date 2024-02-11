@@ -1,6 +1,7 @@
 ﻿using Dislab.Base.Features.Answer.ViewModel;
 using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
+using Dislab.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dislab.Web.Areas.MyProfile.Controllers
@@ -15,9 +16,10 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             _answerService = answerService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var data = await _answerService.GetAllAsync();
+            return View(data);
         }
 
         public IActionResult Insert()
@@ -44,7 +46,48 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAnswerByIdAsync(long id)
+        {
+            var question = await _answerService.GetAnswerByIdAsync(id);
+            return Ok(new
+            {
+                IsSuccess = true,
+                Message = "Answer Successfully.",
+                Data = question
+            });
+        }
 
+        public async Task<IActionResult> Update(long id)
+        {
+            var data = await _answerService.GetAnswerByIdAsync(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(GetAnswerByIdVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _answerService.UpdateAsync(model);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        Message = "Error Message",
+                        Data = model
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
 
 
     }
