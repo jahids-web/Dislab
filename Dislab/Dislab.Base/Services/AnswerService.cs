@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Dislab.Base.Data;
+using Dislab.Base.Features.Answer.DTOs;
 using Dislab.Base.Features.Answer.DTOS;
 using Dislab.Base.Features.Answer.Entities;
 using Dislab.Base.Features.Answer.ViewModel;
@@ -31,22 +32,28 @@ namespace Dislab.Base.Services
             return result;
         }
 
+        public async Task<IEnumerable<Answer>> GetAllAsync()
+        {
+            var result = await _unitOfWork.AnswerRepository.GetAllAsync();
+            //var mappedObject = _mapper.Map<IEnumerable<GetAllAnswerVM>>(result);
+            return result;
+        }
+
+        public async Task<GetAnswerByIdVM> GetAnswerByIdAsync(long id)
+        {
+            var result = await _unitOfWork.AnswerRepository.GetAnswerByIdAsync(id);
+            var mappedObject = _mapper.Map<GetAnswerByIdVM>(result);
+            return mappedObject;
+        }
+
+        public async Task<string> UpdateAsync(GetAnswerByIdVM model)
+        {
+            var mappedObject = _mapper.Map<GetAnswerByIdDTO>(model);
+            var result = await _unitOfWork.AnswerRepository.UpdateAsync(mappedObject);
+            return result;
+        }
+
         public Task<long> DeleteAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Answer>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Answer> GetByIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> UpdateAsync(UpdateAnswerVM model)
         {
             throw new NotImplementedException();
         }
