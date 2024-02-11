@@ -53,9 +53,10 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public Task<long> DeleteAsync(long id)
+        public async Task<long> DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            var result = await _unitOfWork.AnswerRepository.DeleteAsync(id);
+            return result;
         }
     }
 }
