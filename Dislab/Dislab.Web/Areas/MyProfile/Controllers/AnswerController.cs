@@ -89,6 +89,20 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(long id)
+        {
+            try
+            {
+                ViewData["DeleteMessage"] = "Your data is Deleted Successfully!";
+                await _answerService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
+        }
     }
 }
