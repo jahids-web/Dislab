@@ -53,6 +53,7 @@ namespace Dislab.Web.Controllers
             var data = await _askQuestionService.GetByQuestionIdAsync(id);
             return View(data);
         }
+
        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
