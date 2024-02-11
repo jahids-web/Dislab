@@ -41,7 +41,19 @@ namespace Dislab.Base.Features.Answer.Entities
 
         public async Task<long> DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var sqlQuery = @"DELETE FROM Answer WHERE Id = @id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var resutl = await connection.ExecuteAsync(sqlQuery, new { id });
+                return resutl;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
         }
 
         public async Task<IEnumerable<Answer>> GetAllAsync()
