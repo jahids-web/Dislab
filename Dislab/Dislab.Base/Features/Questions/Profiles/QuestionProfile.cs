@@ -17,13 +17,13 @@ namespace Dislab.Base.Features.Questions.Profiles
                .ForMember(dest => dest.QuestionTitle, opt => opt.MapFrom(src => src.QuestionTitle))
                .ForMember(dest => dest.QuestionBody, opt => opt.MapFrom(src => src.QuestionBody));
 
-            CreateMap<GetQuitionByIdVM, GetQuitionByIdDTO>()
-               .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
-
+            
             CreateMap<PostQuestionDetailesVM, PostQuestionDetailesDTO>()
           .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question));
 
             CreateMap<QuestionDetailsVM, QuestionDetailsDTO>().ReverseMap();
+
+            CreateMap<GetAllQuiestionsVM, GetAllQuiestionsDTO>().ReverseMap();
           
         }
     }
