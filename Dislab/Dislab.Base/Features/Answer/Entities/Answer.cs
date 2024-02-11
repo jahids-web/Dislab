@@ -10,11 +10,11 @@ namespace Dislab.Base.Features.Answer.Entities
 {
     public class Answer
     {
-        [Key]
+      
         public long Id { get; set; }
         public long QuestionId {  get; set; }
         public string? AnswerBody { get; set; }
 
-        //public AskQuestion? AskQuestion { get; set; }
+
     }
 }
