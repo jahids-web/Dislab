@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dislab.Base.Features.Answer.Entities.Answer>;
+﻿@model IEnumerable<Dislab.Base.Features.Answer.ViewModel.GetAllAnswerVM>;
 
 @{
     ViewData["Title"] = "Index";
@@ -9,14 +9,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>DataTable</h3>
+                <h3>All Answer</h3>
             </div>
         </div>
     </div>
     <section class="section">
         <div class="row">
             <div class="col-10 fw-bold">
-                All Answer
+            
             </div>
             <div class="col-2">
                 <a asp-area="MyProfile" asp-controller="Answer" asp-action="Insert" class="btn icon icon-left btn-primary">
@@ -31,7 +31,8 @@
                 <table class="table" id="table1">
                     <thead>
                         <tr>
-                            <th class="fw-bold">Answer Id</th>
+                            @* <th class="fw-bold" style="width:130px">Answer Id</th> *@
+                            <th class="fw-bold">No.</th>
                             <th class="fw-bold">AnswerBody</th>
                             <th class="fw-bold" style="width: 250px">Action</th>
 
@@ -41,7 +42,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.QuestionId</td>
+                                @* <td>@item.QuestionId</td> *@
                                 <td>@item.AnswerBody</td>
                                 <td>
                                     <div class="buttons">
