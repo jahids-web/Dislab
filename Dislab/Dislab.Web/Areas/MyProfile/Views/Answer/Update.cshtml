@@ -22,6 +22,7 @@
                                     <div class="col-md-12">
                                         <label asp-for="AnswerBody" class="mb-2 fw-bold">Answer Body</label>
                                         <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <span asp-validation-for="AnswerBody" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
