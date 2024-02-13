@@ -32,11 +32,11 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<IEnumerable<Answer>> GetAllAsync()
+        public async Task<IEnumerable<GetAllAnswerVM>> GetAllAsync()
         {
             var result = await _unitOfWork.AnswerRepository.GetAllAsync();
-            //var mappedObject = _mapper.Map<IEnumerable<GetAllAnswerVM>>(result);
-            return result;
+            var mappedObject = _mapper.Map<IEnumerable<GetAllAnswerVM>>(result);
+            return mappedObject;
         }
 
         public async Task<GetAnswerByIdVM> GetAnswerByIdAsync(long id)
