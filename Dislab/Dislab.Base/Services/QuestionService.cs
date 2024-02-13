@@ -36,7 +36,6 @@ namespace Dislab.Base.Services
 
         public async Task<IEnumerable<Question>> GetAllAsync()
         {
-
             var result = await _unitOfWork.AskQuestionRepository.GetAllAsync();
             return result;
         }
