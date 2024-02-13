@@ -56,7 +56,7 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<IEnumerable<Answer>> GetAllAsync()
+        public async Task<IEnumerable<GetAllAnswerDTO>> GetAllAsync()
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Dislab.Base.Features.Answer.Entities
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryAsync<Answer>(sqlQuery);
+                var result = await connection.QueryAsync<GetAllAnswerDTO>(sqlQuery);
                 return result;
             }
             catch (Exception exception)
