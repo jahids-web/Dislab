@@ -21,7 +21,8 @@
                                     <input name="QuestionId" hidden asp-for="Id">
                                     <div class="col-md-12">
                                         <label class="mb-2 fw-bold" asp-for="AnswerBody">Question Body</label>
-                                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea asp-for="AnswerBody" name="AnswerBody" maxlength="2000" required class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <span asp-validation-for="AnswerBody" class="text-danger"></span>
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mt-3">Submit</button>
