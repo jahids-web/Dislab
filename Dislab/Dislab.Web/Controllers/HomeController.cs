@@ -1,3 +1,4 @@
+using Dislab.Base.Features.Answer.ViewModel;
 using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Dislab.Web.Models;
@@ -9,10 +10,12 @@ namespace Dislab.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IQuestionService _askQuestionService;
+        private readonly IAnswerService _answerService;
 
-        public HomeController(IQuestionService askQuestionService)
+        public HomeController(IQuestionService askQuestionService , IAnswerService answerService)
         {
             _askQuestionService = askQuestionService;
+            _answerService = answerService;
         }
         public async Task<IActionResult> Index()
         {
@@ -54,7 +57,37 @@ namespace Dislab.Web.Controllers
             return View(data);
         }
 
-       
+        public async Task<IActionResult> Update(long id)
+        {
+            var data = await _answerService.GetAnswerByIdAsync(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(GetAnswerByIdVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _answerService.UpdateAsync(model);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        Message = "Error Message",
+                        Data = model
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
