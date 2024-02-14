@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dislab.Base.Features.Answer.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,16 @@ namespace Dislab.Base.Features.Questions.DTOs
 
         public long QuestionId { get; set; }
         public string? AnswerBody { get; set; }
+
+        public List<AnswerVM> Answers { get; set; }
+        public InsertAnswerVM GetAnswerVM()
+        {
+            var model = new InsertAnswerVM
+            {
+                QuestionId = QuestionId,
+                AnswerBody = AnswerBody
+            };
+            return model;
+        }
     }
 }
