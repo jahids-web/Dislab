@@ -4,6 +4,8 @@ namespace Dislab.Base.Features.Answer.DTOs
 {
     public class GetAllAnswerDTO
     {
-        public IEnumerable<GetAllAnswerVM>? GetAllAnswerVMs { get; set; }
+        public long Id { get; set; }
+        public long QuestionId { get; set; }
+        public string? AnswerBody { get; set; }
     }
 }
