@@ -50,6 +50,7 @@
                     </div>
                 </div><!-- end subheader-actions -->
             </div><!-- end subheader -->
+
             <!-- Start loop answer-wrap -->
 
             <div class="answer-wrap d-flex">
@@ -74,32 +75,11 @@
 
                     <div class="question-post-user-action">
                         <div class="post-menu">
-                            <div class="btn-group">
-                                <button class="btn dropdown-toggle after-none" type="button" id="shareDropdownMenuTwo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Share</button>
-                                <div class="dropdown-menu dropdown--menu dropdown--menu-2 mt-2" aria-labelledby="shareDropdownMenuTwo">
-                                    <div class="py-3 px-4">
-                                        <h4 class="fs-15 pb-2">Share a link to this question</h4>
-                                        <form action="#" class="copy-to-clipboard">
-                                            <span class="text-success-message">Link Copied!</span>
-                                            <input type="text" class="form-control form--control form-control-sm copy-input" value="https://disilab.com/q/66552850/15319675">
-                                            <div class="btn-box pt-2 d-flex align-items-center justify-content-between">
-                                                <a href="#" class="btn-text copy-btn">Copy link</a>
-                                                <ul class="social-icons social-icons-sm">
-                                                    <li><a href="#" class="bg-8 text-white shadow-none" title="Share link to this question on Facebook"><i class="la la-facebook"></i></a></li>
-                                                    <li><a href="#" class="bg-9 text-white shadow-none" title="Share link to this question on Twitter"><i class="la la-twitter"></i></a></li>
-                                                    <li><a href="#" class="bg-dark text-white shadow-none" title="Share link to this question on DEV"><i class="lab la-dev"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div><!-- btn-group -->
-                            <a href="#" class="btn">Edit</a>
-                            <button class="btn">Follow</button>
+                            <a href="#" class="btn" data-toggle="modal" data-target="#EditModal">Edit</a>
                         </div><!-- end post-menu -->
                         <div class="media media-card user-media align-items-center">
                             <a href="user-profile.html" class="media-img d-block">
-                                <img src="~/home/assetsimages/img4.jpg" alt="avatar">
+                                <img src="~/home/assets/images/img4.jpg" alt="avatar">
                             </a>
                             <div class="media-body d-flex align-items-center justify-content-between">
                                 <div>
@@ -211,6 +191,7 @@
             </div>
 
             <!-- end answer-wrap -->
+
             <div class="subheader">
                 <div class="subheader-title">
                     <h3 class="fs-16">Your Answer</h3>
@@ -431,3 +412,27 @@
     </div><!-- end col-lg-3 -->
 </div><!-- end row -->
 
+@* Edit Modal Start *@
+<div class="modal fade modal-container Edit-form" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form class="form form-horizontal novalidate role="form" method="post"
+                    asp-area="MyProfile" asp-controller="Answer" asp-action="Update" asp-antiforgery="true">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <input name="QuestionId" hidden asp-for="Id">
+                        <label class="fs-14 text-black fw-medium lh-18 mr-3">Answer</label>
+                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="btn theme-btn w-100">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
