@@ -16,6 +16,8 @@ namespace Dislab.Base.Features.Questions.ViewModels
         public long QuestionId {  get; set; }
         public string? AnswerBody {  get; set; }
 
+        public List<AnswerVM> Answers { get; set; }
+
         public InsertAnswerVM GetAnswerVM()
         {
             var model = new InsertAnswerVM
@@ -25,5 +27,7 @@ namespace Dislab.Base.Features.Questions.ViewModels
             };
             return model;
         }
+
+
     }
 }
