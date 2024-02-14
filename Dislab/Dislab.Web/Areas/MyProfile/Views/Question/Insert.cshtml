@@ -20,12 +20,14 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label asp-for="QuestionTitle" class="mb-2 fw-bold">Question Title</label>
-                                        <input asp-for="QuestionTitle" type="text" class="form-control mb-4" name="QuestionTitle"
+                                        <input asp-for="QuestionTitle" type="text" maxlength="150" required class="form-control mb-4" name="QuestionTitle"
                                                placeholder="Question Title">
+                                        <span asp-validation-for="QuestionTitle" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="mb-2 fw-bold" asp-for="QuestionBody">Question Body</label>
-                                        <textarea asp-for="QuestionBody" name="QuestionBody" class="form-control mb-4" placeholder="Question Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea asp-for="QuestionBody" name="QuestionBody" maxlength="2000" required class="form-control mb-4" placeholder="Question Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <span asp-validation-for="QuestionBody" class="text-danger"></span>
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mt-3">Submit</button>
