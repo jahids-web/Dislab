@@ -31,6 +31,7 @@
                 <table class="table" id="table1">
                     <thead>
                         <tr>
+                            <th class="fw-bold">No.</th>
                             <th class="fw-bold">QuestionTitle</th>
                             <th class="fw-bold">QuestionBody</th>
                             <th class ="fw-bold" style="width: 250px">Action</th>
@@ -41,6 +42,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td>
+                                    @{
+                                        var serialNumber = Model.ToList().IndexOf(item) + 1; 
+                                    }
+                                    @serialNumber 
+                                </td>
                                 <td>@item.QuestionTitle</td>
                                 <td>@item.QuestionBody</td>
                                 <td>
