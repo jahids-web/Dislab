@@ -7,7 +7,7 @@ namespace Dislab.Base.Services
     public interface IAnswerService 
     {
         public Task<bool> InsertAsync(InsertAnswerVM model);
-        public Task<string> UpdateAsync(GetAnswerByIdVM model);
+        public Task<string> UpdateAsync(UpdateAnswerVM model);
         public Task<long> DeleteAsync(long id);
         public Task<IEnumerable<GetAllAnswerVM>> GetAllAsync();
         public Task<GetAnswerByIdVM> GetAnswerByIdAsync(long id);
