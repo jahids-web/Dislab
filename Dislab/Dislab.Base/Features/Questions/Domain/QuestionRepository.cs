@@ -74,7 +74,11 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             try
             {
-                var sqlQuery = @"SELECT * FROM AskQuestion WHERE Id = @id";
+                //var sqlQuery = @"SELECT * FROM AskQuestion WHERE Id = @id";
+                var sqlQuery = @"SELECT AQ.Id, AQ.QuestionTitle, AQ.QuestionBody, A.Id AnswerId, A.AnswerBody 
+                FROM AskQuestion AS AQ
+                INNER JOIN Answer AS A ON AQ.Id = A.QuestionId
+                WHERE AQ.Id = @Id;";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
@@ -92,7 +96,6 @@ namespace Dislab.Base.Features.Questions.Domain
             try
             {
                 var sqlQuery = @"UPDATE AskQuestion SET QuestionTitle = @QuestionTitle, QuestionBody = @QuestionBody WHERE Id = @Id";
-
                 using var connection = _context.CreateConnection();
                 connection.Open();
                 var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
