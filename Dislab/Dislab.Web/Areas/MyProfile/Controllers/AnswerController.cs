@@ -65,12 +65,13 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(GetAnswerByIdVM model)
+        public async Task<IActionResult> Update(QuestionDetailsVM questionDetailsVM)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var model = questionDetailsVM.GetUpdateAnswerVm();
                     await _answerService.UpdateAsync(model);
                     return RedirectToAction(nameof(Index));
                 }
@@ -79,7 +80,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                     return Ok(new
                     {
                         Message = "Error Message",
-                        Data = model
+                        Data = questionDetailsVM
                     });
                 }
             }
