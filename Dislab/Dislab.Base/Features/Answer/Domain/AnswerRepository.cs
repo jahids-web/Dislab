@@ -90,7 +90,7 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<string> UpdateAsync(GetAnswerByIdDTO model)
+        public async Task<string> UpdateAsync(UpdateAnswerDTO model)
         {
             try
             {
