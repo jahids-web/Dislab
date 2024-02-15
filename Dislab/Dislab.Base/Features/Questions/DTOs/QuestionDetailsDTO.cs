@@ -14,6 +14,8 @@ namespace Dislab.Base.Features.Questions.DTOs
         public string? QuestionBody { get; set; }
 
         public long QuestionId { get; set; }
+
+        public long AnswerId { get; set; }
         public string? AnswerBody { get; set; }
 
         public List<AnswerVM> Answers { get; set; }
