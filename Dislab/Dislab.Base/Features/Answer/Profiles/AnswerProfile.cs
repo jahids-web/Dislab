@@ -18,6 +18,7 @@ namespace Dislab.Base.Features.Answer.Profiles
              .ForMember(dest => dest.AnswerBody, opt => opt.MapFrom(src => src.AnswerBody));
 
             CreateMap<GetAllAnswerVM, GetAllAnswerDTO>().ReverseMap();
+            CreateMap<UpdateAnswerVM, UpdateAnswerDTO>().ReverseMap();
              
         }
      
