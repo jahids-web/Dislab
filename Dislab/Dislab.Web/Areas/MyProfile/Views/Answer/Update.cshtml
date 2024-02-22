@@ -1,4 +1,4 @@
-﻿@model Dislab.Base.Features.Answer.ViewModel.GetAnswerByIdVM;
+﻿@model Dislab.Base.Features.Answer.ViewModel.AdminAnswerVM;
 @{
     ViewData["Title"] = "Update";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -18,10 +18,10 @@
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-body">
                                 <div class="row">
-                                    <input name="QuestionId" hidden asp-for="Id">
                                     <div class="col-md-12">
+                                        <input name="Id" hidden asp-for="Id">
                                         <label asp-for="AnswerBody" class="mb-2 fw-bold">Answer Body</label>
-                                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body"  rows="3"></textarea>
                                         <span asp-validation-for="AnswerBody" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end">
