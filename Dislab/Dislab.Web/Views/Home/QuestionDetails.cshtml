@@ -10,9 +10,10 @@
             <div class="question-highlight">
                 <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
                     <div class="media-body">
-                        <a asp-route-id="Id"></a>
+                      @*   <a asp-route-id="Id"></a> *@
+                        <input name="QuestionId" hidden asp-for="Id">
                         <h5 class="fs-20 mb-2">@Html.DisplayFor(x => x.QuestionTitle)</h5>
-                        <p class="mb-2 truncate lh-20 fs-15">@Html.DisplayFor(x => x.QuestionBody)</p>
+                        <p class="mb-2 truncate lh-20 fs-15">@Html.DisplayFor(x => x.QuestionBody)</p> 
                         <div class="meta d-flex flex-wrap align-items-center fs-13 lh-20 py-1">
                             <div class="pr-3">
                                 <span>Asked</span>
@@ -199,11 +200,9 @@
             </div><!-- end subheader -->
             <div class="post-form">
                 <form class="form form-horizontal novalidate role="form" method="post"
-                      asp-area="MyProfile" asp-controller="Answer" asp-action="Insert" asp-antiforgery="true">
+                      asp-area="MyProfile" asp-controller="Answer" asp-action="InsertFE" asp-antiforgery="true">
                     <div asp-validation-summary="All" class="text-danger"></div>
-
-                   @*  <input type="hidden" name="QuestionId" value="@Model.Id" /> *@
-                    <input name="QuestionId" hidden asp-for="Id">
+                   @*  <input name="QuestionId" hidden asp-for="Id"> *@
                     <div class="input-box">
                         <label class="fs-14 text-black lh-20 fw-medium">Body</label>
                         <div class="form-group">
@@ -211,7 +210,7 @@
                                        rows="6" placeholder="Your answer here...">Your answer here...</textarea>
                         </div>
                     </div>
-                @*     <div class="input-box">
+                   @*  <div class="input-box">
                         <label class="fs-14 text-black fw-medium">Image</label>
                         <div class="form-group">
                             <div class="file-upload-wrap file-upload-layout-2">
@@ -219,7 +218,7 @@
                                 <span class="file-upload-text d-flex align-items-center justify-content-center"><i class="la la-cloud-upload mr-2 fs-24"></i>Drop files here or click to upload.</span>
                             </div>
                         </div>
-                    </div><!-- end input-box --> *@
+                    </div> *@<!-- end input-box -->
                     <button class="btn theme-btn theme-btn-sm" type="submit">Post Your Answer</button>
                 </form>
             </div>
@@ -417,10 +416,9 @@
 <div class="modal fade modal-container Edit-form" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-
             <div class="modal-body">
                 <form class="form form-horizontal novalidate role="form" method="post"
-                    asp-area="MyProfile" asp-controller="Answer" asp-action="Update" asp-antiforgery="true">
+                      asp-area="MyProfile" asp-controller="Answer" asp-action="UpdateFE" asp-antiforgery="true">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group">
                         <input name="AnswerId" hidden asp-for="AnswerId">
