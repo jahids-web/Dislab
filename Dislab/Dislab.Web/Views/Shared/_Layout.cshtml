@@ -74,9 +74,6 @@
                                     <a asp-area="" asp-controller="Home" asp-action="AllQuestion"> All Question</a>
                             </li>
 
-                        @*     <li class="is-mega-menu">
-                                    <a asp-area=" " asp-controller="Home" asp-action="QuestionDetails"> Question Details</a>
-                            </li> *@
                             <li class="is-mega-menu">
                                     <a asp-area="MyProfile" asp-controller="Dashboard" asp-action="Index"> My Profile</a>
                             </li>
@@ -97,7 +94,32 @@
             </div><!-- end col-lg-10 -->
         </div><!-- end row -->
     </div><!-- end container -->
-   
+        <div class="off-canvas-menu custom-scrollbar-styled">
+            <div class="off-canvas-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+                <i class="la la-times"></i>
+            </div><!-- end off-canvas-menu-close -->
+            <ul class="generic-list-item off-canvas-menu-list pt-90px">
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="index">
+                        Home
+                    </a>
+                </li>
+                <li class="is-mega-menu">
+                    <a asp-area="" asp-controller="Home" asp-action="AllQuestion"> All Question</a>
+                </li>
+
+                <li class="is-mega-menu">
+                    <a asp-area="MyProfile" asp-controller="Dashboard" asp-action="Index"> My Profile</a>
+                </li>
+            </ul>
+            <div class="off-canvas-btn-box px-4 pt-5 text-center">
+                <a href="#" class="btn theme-btn theme-btn-sm theme-btn-outline" data-toggle="modal" data-target="#loginModal"><i class="la la-sign-in mr-1"></i> Login</a>
+                <span class="fs-15 fw-medium d-inline-block mx-2">Or</span>
+                <a href="#" class="btn theme-btn theme-btn-sm" data-toggle="modal" data-target="#signUpModal"><i class="la la-plus mr-1"></i> Sign up</a>
+            </div>
+        </div><!-- end off-canvas-menu -->
+        <div class="body-overlay"></div>
+        <!-- end off-canvas-menu -->
     <div class="mobile-search-form">
         <div class="d-flex align-items-center">
             <form method="post" class="flex-grow-1 mr-3">
