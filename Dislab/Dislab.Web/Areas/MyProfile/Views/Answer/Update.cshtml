@@ -6,7 +6,7 @@
 
 <section id="basic-horizontal-layouts">
     <div class="row match-height">
-        <div class="col-md-6 m-auto col-12">
+        <div class="col-md-8 m-auto col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Update Answer</h4>
@@ -21,7 +21,7 @@
                                     <div class="col-md-12">
                                         <input name="Id" hidden asp-for="Id">
                                         <label asp-for="AnswerBody" class="mb-2 fw-bold">Answer Body</label>
-                                        <textarea asp-for="AnswerBody" name="AnswerBody" class="form-control mb-4" placeholder="Answer Body"  rows="3"></textarea>
+                                        <textarea asp-for="AnswerBody" name="AnswerBody" maxlength="2000" class="form-control mb-4" placeholder="Answer Body" rows="3"></textarea>
                                         <span asp-validation-for="AnswerBody" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end">
