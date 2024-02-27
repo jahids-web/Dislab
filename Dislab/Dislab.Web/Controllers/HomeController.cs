@@ -1,4 +1,5 @@
-using Dislab.Base.Features.Answer.ViewModel;
+using AutoMapper;
+using Dapper.Extensions;
 using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Dislab.Web.Models;
@@ -10,22 +11,22 @@ namespace Dislab.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IQuestionService _askQuestionService;
-        private readonly IAnswerService _answerService;
+        private readonly IMapper _mapper;
 
-        public HomeController(IQuestionService askQuestionService , IAnswerService answerService)
+        public HomeController(IQuestionService askQuestionService, IMapper mapper)
         {
             _askQuestionService = askQuestionService;
-            _answerService = answerService;
+            _mapper = mapper;
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _askQuestionService.GetAllAsync();
+            var data = await _askQuestionService.GetAllFEAsync();
             return View(data);
         } 
         
         public async Task<IActionResult> AllQuestion()
         {
-            var data = await _askQuestionService.GetAllAsync();
+            var data = await _askQuestionService.GetAllFEAsync();
             return View(data);
         }    
         
@@ -41,7 +42,7 @@ namespace Dislab.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var result = await _askQuestionService.InsertAsync(model);
+                    var result = await _askQuestionService.InsertFEAsync(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -53,7 +54,7 @@ namespace Dislab.Web.Controllers
 
         public async Task<IActionResult> QuestionDetails(long id)
         {
-            var data = await _askQuestionService.GetByQuestionIdAsync(id);
+            var data = await _askQuestionService.GetQuestionByFEIdAsync(id);
             return View(data);
         }
 
