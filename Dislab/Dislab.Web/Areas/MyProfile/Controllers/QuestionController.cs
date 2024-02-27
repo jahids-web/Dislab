@@ -19,7 +19,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _askQuestionService.GetAllAsync();
+            var data = await _askQuestionService.GetAllFEAsync();
             return View(data);
         }
 
@@ -29,13 +29,13 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert(InsertQuestionVM model)
+        public async Task<IActionResult> InsertFE(InsertQuestionVM model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var result = await _askQuestionService.InsertAsync(model);
+                    var result = await _askQuestionService.InsertFEAsync(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -51,20 +51,20 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             try
             {
                 ViewData["DeleteMessage"] = "Your data is Deleted Successfully!";
-                await _askQuestionService.DeleteAsync(id);
+                await _askQuestionService.DeleteFEAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception exception)
             {
                 return RedirectToAction(nameof(Index));
             }
-           
+
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetQuestionById(long id)
+        public async Task<IActionResult> GetQuestionByFEId(long id)
         {
-            var question = await _askQuestionService.GetByQuestionIdAsync(id);
+            var question = await _askQuestionService.GetQuestionByFEIdAsync(id);
             return Ok(new
             {
                 IsSuccess = true,
@@ -73,14 +73,42 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             });
         }
 
-        public async Task<IActionResult> Update(long id)
+        public async Task<IActionResult> UpdateQuestionFE(long id)
         {
-            var data = await _askQuestionService.GetByQuestionIdAsync(id);
+            var data = await _askQuestionService.GetQuestionByFEIdAsync(id);
             return View(data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateQuestionVM model)
+        public async Task<IActionResult> UpdateQuestionFE(QuestionDetailsVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _askQuestionService.UpdateFEAsync(model);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        //DashBoard 
+        public async Task<IActionResult> Update(long id)
+        {
+            var data = await _askQuestionService.GetQuestionByIdAsync(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(AdminQuestionVM model)
         {
             try
             {
@@ -94,10 +122,11 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                     return Ok();
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return RedirectToAction(nameof(Index));
             }
         }
+
     }
 }
