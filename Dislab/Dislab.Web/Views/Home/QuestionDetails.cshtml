@@ -64,7 +64,8 @@
                     </div>
                 </div><!-- end votes -->
                 <div class="answer-body-wrap flex-grow-1">
-
+                    @*  loop *@
+             
                     <div class="answer-body">
                         <p>Since you're using an <code class="code">arrow-function</code>, <code class="code">this</code> does not refer to the <code class="code">button</code>:</p>
 
@@ -188,6 +189,7 @@
                             </div><!-- end collapse -->
                         </div>
                     </div><!-- end comments-wrap -->
+                   @*  loop *@
                 </div><!-- end answer-body-wrap -->
             </div>
 
@@ -202,7 +204,7 @@
                 <form class="form form-horizontal novalidate role="form" method="post"
                       asp-area="MyProfile" asp-controller="Answer" asp-action="InsertFE" asp-antiforgery="true">
                     <div asp-validation-summary="All" class="text-danger"></div>
-                   @*  <input name="QuestionId" hidden asp-for="Id"> *@
+                    <input name="QuestionId" hidden asp-for="Id">
                     <div class="input-box">
                         <label class="fs-14 text-black lh-20 fw-medium">Body</label>
                         <div class="form-group">
