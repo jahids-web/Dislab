@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dislab.Base.Features.Questions.Entities.Question>;
+﻿@model IEnumerable<Dislab.Base.Features.Questions.ViewModels.GetAllQuiestionsVM>;
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -46,15 +46,15 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <h5 class="mb-2 fw-medium"><a asp-area="" asp-controller="Home" asp-action="QuestionDetails" asp-route-id="@item.Id">@item.QuestionTitle</a> </h5>
-                    @if (item.QuestionBody?.Length > 120)
-                    {
-                        <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody.Remove(120)</p>
-                    }
-                    else
-                    {
-                        <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody</p>
-                    }
+                        <h5 class="mb-2 fw-medium"><a asp-area="" asp-controller="Home" asp-action="QuestionDetails" asp-route-id="@item.Id">@item.QuestionTitle</a> </h5>
+                        @if (item.QuestionBody?.Length > 120)
+                        {
+                            <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody.Remove(120)</p>
+                        }
+                        else
+                        {
+                            <p class="mb-2 truncate lh-20 fs-15">@item.QuestionBody</p>
+                        }
                     <div class="tags">
                         <a href="#" class="tag-link">javascript</a>
                         <a href="#" class="tag-link">bootstrap-4</a>
