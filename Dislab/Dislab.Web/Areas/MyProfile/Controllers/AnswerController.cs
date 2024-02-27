@@ -18,7 +18,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _answerService.GetAllAsync();
+            var data = await _answerService.GetAllFEAsync();
             return View(data);
         }
 
@@ -28,15 +28,15 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert(QuestionDetailsVM questionDetailsModel)
+        public async Task<IActionResult> InsertFE(QuestionDetailsVM questionDetailsModel)
         {
-           
+
             try
             {
                 if(ModelState.IsValid)
                 {
-                    var model = questionDetailsModel.GetAnswerVM();
-                    await _answerService.InsertAsync(model);
+                    var model = questionDetailsModel.GetInsertAnswerVM();
+                    await _answerService.InsertFEAsync(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -47,9 +47,9 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAnswerByIdAsync(long id)
+        public async Task<IActionResult> GetAnswerByIdFEAsync(long id)
         {
-            var question = await _answerService.GetAnswerByIdAsync(id);
+            var question = await _answerService.GetAnswerByIdFEAsync(id);
             return Ok(new
             {
                 IsSuccess = true,
@@ -58,21 +58,21 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             });
         }
 
-        public async Task<IActionResult> Update(long id)
+        public async Task<IActionResult> UpdateFE(long id)
         {
-            var data = await _answerService.GetAnswerByIdAsync(id);
+            var data = await _answerService.GetAnswerByIdFEAsync(id);
             return View(data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(QuestionDetailsVM questionDetailsVM)
+        public async Task<IActionResult> UpdateFE(QuestionDetailsVM questionDetailsVM)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     var model = questionDetailsVM.GetUpdateAnswerVm();
-                    await _answerService.UpdateAsync(model);
+                    await _answerService.UpdateFEAsync(model);
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -91,12 +91,12 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(long id)
+        public async Task<IActionResult> DeleteAsync(long id)
         {
             try
             {
                 ViewData["DeleteMessage"] = "Your data is Deleted Successfully!";
-                await _answerService.DeleteAsync(id);
+                await _answerService.DeleteFEAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception exception)
@@ -105,5 +105,38 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             }
 
         }
+
+        //DashBoard
+        public async Task<IActionResult> Update(long id)
+        {
+            var data = await _answerService.GetAnswerByIdAsync(id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(AdminAnswerVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _answerService.UpdateAsync(model);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        Message = "Error Message",
+                        Data = model
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
     }
 }
