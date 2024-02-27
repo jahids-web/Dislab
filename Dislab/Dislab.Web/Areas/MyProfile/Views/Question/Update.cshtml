@@ -1,4 +1,4 @@
-﻿@model Dislab.Base.Features.Questions.ViewModels.QuestionDetailsVM;
+﻿@model Dislab.Base.Features.Questions.ViewModels.AdminQuestionVM;
 @{
     ViewData["Title"] = "Update";
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,7 @@
 
 <section id="basic-horizontal-layouts">
     <div class="row match-height">
-        <div class="col-md-6 m-auto col-12">
+        <div class="col-md-8 m-auto col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Update Question</h4>
@@ -19,17 +19,14 @@
                             <div class="form-body">
                                 <div class="row">
                                     <input hidden asp-for="Id">
-                                           
                                     <div class="col-md-12">
                                         <label asp-for="QuestionTitle" class="mb-2 fw-bold">Question Title</label>
-                                        <input asp-for="QuestionTitle" type="text" maxlength="150" required class="form-control mb-4" name="QuestionTitle"
+                                        <input asp-for="QuestionTitle" type="text" class="form-control mb-4" name="QuestionTitle"
                                                placeholder="Question Title">
-                                        <span asp-validation-for="QuestionTitle" class="text-danger"></span>
                                     </div>
                                     <div class="col-md-12">
                                         <label asp-for="QuestionBody" class="mb-2 fw-bold">Question Body</label>
-                                        <textarea asp-for="QuestionBody" name="QuestionBody" maxlength="2000" required class="form-control mb-4" placeholder="Question Body" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        <span asp-validation-for="QuestionBody" class="text-danger"></span>
+                                        <textarea asp-for="QuestionBody" name="QuestionBody" class="form-control mb-4" placeholder="Question Body" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
