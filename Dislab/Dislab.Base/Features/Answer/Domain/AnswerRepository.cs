@@ -18,7 +18,7 @@ namespace Dislab.Base.Features.Answer.Entities
             _context = context;
         }
 
-        public async Task<bool> InsertAsync(InsertAnswerDTO model)
+        public async Task<bool> InsertFEAsync(InsertAnswerDTO model)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<long> DeleteAsync(long id)
+        public async Task<long> DeleteFEAsync(long id)
         {
             try
             {
@@ -56,12 +56,14 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<IEnumerable<GetAllAnswerDTO>> GetAllAsync()
+        public async Task<IEnumerable<GetAllAnswerDTO>> GetAllFEAsync()
         {
             try
             {
-                var sqlQuery = @"SELECT * FROM Answer";
-
+                //var sqlQuery = @"SELECT * FROM Answer";
+                var sqlQuery = @"SELECT Answer.*, Question.QuestionTitle
+                   FROM Answer
+                   INNER JOIN Question ON Answer.QuestionID = Question.ID";
                 using var connection = _context.CreateConnection();
                 connection.Open();
                 var result = await connection.QueryAsync<GetAllAnswerDTO>(sqlQuery);
@@ -73,7 +75,7 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<GetAnswerByIdDTO> GetAnswerByIdAsync(long id)
+        public async Task<GetAnswerByIdDTO> GetAnswerByIdFEAsync(long id)
         {
             try
             {
@@ -90,7 +92,7 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<string> UpdateAsync(UpdateAnswerDTO model)
+        public async Task<string> UpdateFEAsync(UpdateAnswerDTO model)
         {
             try
             {
@@ -114,5 +116,49 @@ namespace Dislab.Base.Features.Answer.Entities
                 throw new InvalidOperationException(exception.Message, exception);
             }
         }
+
+        //DashBoard
+        public async Task<AdminAnswerDTO> GetAnswerByIdAsync(long id)
+        {
+            try
+            {
+                var sqlQuery = @"SELECT * FROM Answer WHERE Id = @id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<AdminAnswerDTO>(sqlQuery, new { id });
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
+        }
+
+        public async Task<string> UpdateAsync(AdminAnswerDTO model)
+        {
+            try
+            {
+                var sqlQuery = @"UPDATE Answer SET AnswerBody = @AnswerBody WHERE Id = @Id";
+
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
+                if (result > 0)
+                {
+                    return "Success";
+                }
+                else
+                {
+                    return "Not Success";
+                }
+
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
+        }
+
     }
 }
