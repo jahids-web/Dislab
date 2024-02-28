@@ -14,11 +14,11 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             _context = context;
         }
-        public async Task<bool> InsertAsync(InsertQuestionDTO model)
+        public async Task<bool> InsertFEAsync(InsertQuestionDTO model)
         {
             try
             {
-                var sqlQuesy = @"INSERT INTO AskQuestion (QuestionTitle, QuestionBody) VALUES (@QuestionTitle, @QuestionBody)";
+                var sqlQuesy = @"INSERT INTO Question (QuestionTitle, QuestionBody) VALUES (@QuestionTitle, @QuestionBody)";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
@@ -36,11 +36,11 @@ namespace Dislab.Base.Features.Questions.Domain
 
         }
 
-        public async Task<long> DeleteAsync(long id)
+        public async Task<long> DeleteFEAsync(long id)
         {
             try
             {
-                var sqlQuery = @"DELETE FROM AskQuestion WHERE Id = @id";
+                var sqlQuery = @"DELETE FROM Question WHERE Id = @id";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
@@ -53,15 +53,15 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<IEnumerable<Question>> GetAllAsync()
+        public async Task<IEnumerable<GetAllQuiestionsDTO>> GetAllFEAsync()
         {
             try
             {
-                var sqlQuery = @"SELECT * FROM AskQuestion";
+                var sqlQuery = @"SELECT * FROM Question";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryAsync<Question>(sqlQuery);
+                var result = await connection.QueryAsync<GetAllQuiestionsDTO>(sqlQuery);
                 return result;
             }
             catch (Exception exception)
@@ -70,15 +70,14 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<QuestionDetailsDTO> GetByQuestionIdAsync(long id)
+        public async Task<QuestionDetailsDTO> GetQuestionByFEIdAsync(long id)
         {
             try
             {
-                //var sqlQuery = @"SELECT * FROM AskQuestion WHERE Id = @id";
-                var sqlQuery = @"SELECT AQ.Id, AQ.QuestionTitle, AQ.QuestionBody, A.Id AnswerId, A.AnswerBody 
-                FROM AskQuestion AS AQ
-                INNER JOIN Answer AS A ON AQ.Id = A.QuestionId
-                WHERE AQ.Id = @Id;";
+                var sqlQuery = @"SELECT Q.Id, Q.QuestionTitle, Q.QuestionBody, A.Id AnswerId, A.AnswerBody 
+                FROM Question AS Q
+                INNER JOIN Answer AS A ON Q.Id = A.QuestionId
+                WHERE Q.Id = @Id;";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
@@ -91,11 +90,11 @@ namespace Dislab.Base.Features.Questions.Domain
             }
         }
 
-        public async Task<string> UpdateAsync(UpdateQuestionDTO model)
+        public async Task<string> UpdateFEAsync(QuestionDetailsDTO model)
         {
             try
             {
-                var sqlQuery = @"UPDATE AskQuestion SET QuestionTitle = @QuestionTitle, QuestionBody = @QuestionBody WHERE Id = @Id";
+                var sqlQuery = @"UPDATE Question SET QuestionTitle = @QuestionTitle, QuestionBody = @QuestionBody WHERE Id = @Id";
                 using var connection = _context.CreateConnection();
                 connection.Open();
                 var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
@@ -114,6 +113,48 @@ namespace Dislab.Base.Features.Questions.Domain
                 throw new InvalidOperationException(exception.Message, exception);
             }
         }
+
+        // Dashboard 
+        public async Task<AdminQuestionDTO> GetQuestionByIdAsync(long id)
+        {
+            try
+            {
+                var sqlQuery = @"SELECT * FROM Question WHERE Id = @id";
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<AdminQuestionDTO>(sqlQuery, new { id });
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
+        }
+
+        public async Task<string> UpdateAsync(AdminQuestionDTO model)
+        {
+            try
+            {
+                var sqlQuery = @"UPDATE Question SET QuestionTitle = @QuestionTitle, QuestionBody = @QuestionBody WHERE Id = @Id";
+                using var connection = _context.CreateConnection();
+                connection.Open();
+                var result = await connection.QueryFirstOrDefaultAsync<long>(sqlQuery, model);
+                if (result > 0)
+                {
+                    return "Success";
+                }
+                else
+                {
+                    return "Not Success";
+                }
+
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException(exception.Message, exception);
+            }
+        }
+
     }
 
 }
