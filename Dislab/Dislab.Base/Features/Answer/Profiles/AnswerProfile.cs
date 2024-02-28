@@ -19,6 +19,8 @@ namespace Dislab.Base.Features.Answer.Profiles
 
             CreateMap<GetAllAnswerVM, GetAllAnswerDTO>().ReverseMap();
             CreateMap<UpdateAnswerVM, UpdateAnswerDTO>().ReverseMap();
+
+            CreateMap<AdminAnswerVM, AdminAnswerDTO>().ReverseMap();
              
         }
      
