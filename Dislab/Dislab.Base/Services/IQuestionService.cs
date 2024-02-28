@@ -11,10 +11,14 @@ namespace Dislab.Base.Services
 {
     public interface IQuestionService
     {
-        public Task<bool> InsertAsync(InsertQuestionVM model);
-        public Task<string> UpdateAsync(UpdateQuestionVM model);
-        public Task<long> DeleteAsync(long id);
-        public Task<IEnumerable<Question>> GetAllAsync();
-        public Task<QuestionDetailsVM> GetByQuestionIdAsync(long id);
+        public Task<bool> InsertFEAsync(InsertQuestionVM model);
+        public Task<string> UpdateFEAsync(QuestionDetailsVM model);
+        public Task<long> DeleteFEAsync(long id);
+        public Task<IEnumerable<GetAllQuiestionsVM>> GetAllFEAsync();
+        public Task<QuestionDetailsVM> GetQuestionByFEIdAsync(long id);
+
+        // Dashboard
+        public Task<AdminQuestionVM> GetQuestionByIdAsync(long id);
+        public Task<string> UpdateAsync(AdminQuestionVM model);
     }
 }
