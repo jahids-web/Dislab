@@ -6,6 +6,7 @@ namespace Dislab.Base.Features.Questions.ViewModels
     {
         [Required]
         public long Id { get; set; }
+        //public long QuestionId { get; set; }
 
         [Required]
         [StringLength(150, ErrorMessage = "Question Title can't be more than 150 characters.")]

@@ -17,9 +17,9 @@ namespace Dislab.Base.Features.Questions.ViewModels
         public long AnswerId { get; set; }
         public string? AnswerBody {  get; set; }
 
-        public List<AnswerVM>? Answers { get; set; } //Ekane sob Answer list ante hobe loop e kaj korar guno
+        public List<AnswerVM>? Answers { get; set; } //Ekane sob Answer list ante hobe loop e kaj korar juno
 
-        public InsertAnswerVM GetAnswerVM()
+        public InsertAnswerVM GetInsertAnswerVM()
         {
             var model = new InsertAnswerVM
             {
