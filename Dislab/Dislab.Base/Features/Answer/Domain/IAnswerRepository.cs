@@ -6,10 +6,14 @@ namespace Dislab.Base.Features.Answer.Entities
 {
     public interface IAnswerRepository
     {
-        public Task<bool> InsertAsync(InsertAnswerDTO model);
-        public Task<string> UpdateAsync(UpdateAnswerDTO model);
-        public Task<long> DeleteAsync(long id);
-        public Task<IEnumerable<GetAllAnswerDTO>> GetAllAsync();
-        public Task<GetAnswerByIdDTO> GetAnswerByIdAsync(long id);
+        public Task<bool> InsertFEAsync(InsertAnswerDTO model);
+        public Task<string> UpdateFEAsync(UpdateAnswerDTO model);
+        public Task<long> DeleteFEAsync(long id);
+        public Task<IEnumerable<GetAllAnswerDTO>> GetAllFEAsync();
+        public Task<GetAnswerByIdDTO> GetAnswerByIdFEAsync(long id);
+
+        //DashBoard
+        public Task<AdminAnswerDTO> GetAnswerByIdAsync(long id);
+        public Task<string> UpdateAsync(AdminAnswerDTO model);
     }
 }
