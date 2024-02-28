@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dislab.Base.Features.Answer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,13 @@ namespace Dislab.Base.Features.Answer.ViewModel
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
+
+        public long AnswerId { get; set; }
         public string? AnswerBody { get; set; }
+
+   
+
+   
     }
+  
 }
