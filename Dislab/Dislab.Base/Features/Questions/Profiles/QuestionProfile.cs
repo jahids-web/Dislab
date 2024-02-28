@@ -20,6 +20,8 @@ namespace Dislab.Base.Features.Questions.Profiles
             CreateMap<QuestionDetailsVM, QuestionDetailsDTO>().ReverseMap();
 
             CreateMap<GetAllQuiestionsVM, GetAllQuiestionsDTO>().ReverseMap();
+
+            CreateMap<AdminQuestionVM, AdminQuestionDTO>().ReverseMap();
           
         }
     }
