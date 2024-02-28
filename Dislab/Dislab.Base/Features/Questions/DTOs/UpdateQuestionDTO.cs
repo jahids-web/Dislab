@@ -10,6 +10,7 @@ namespace Dislab.Base.Features.Questions.DTOs
     public class UpdateQuestionDTO
     {
         public long Id { get; set; }
+        //public long QuestionId { get; set; }
         public string? QuestionTitle { get; set; }
         public string? QuestionBody { get; set; }
     }
