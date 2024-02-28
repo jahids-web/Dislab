@@ -18,12 +18,22 @@ namespace Dislab.Base.Features.Questions.DTOs
         public long AnswerId { get; set; }
         public string? AnswerBody { get; set; }
 
-        public List<AnswerVM> Answers { get; set; }
+        public List<AnswerVM>? Answers { get; set; }
         public InsertAnswerVM GetAnswerVM()
         {
             var model = new InsertAnswerVM
             {
                 QuestionId = QuestionId,
+                AnswerBody = AnswerBody
+            };
+            return model;
+        }
+
+        public UpdateAnswerVM GetUpdateAnswerVm()
+        {
+            var model = new UpdateAnswerVM
+            {
+                Id = AnswerId,
                 AnswerBody = AnswerBody
             };
             return model;
