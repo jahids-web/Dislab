@@ -9,7 +9,7 @@ namespace Dislab.Base.Features.Answer.Entities
         public Task<bool> InsertFEAsync(InsertAnswerDTO model);
         public Task<string> UpdateFEAsync(UpdateAnswerDTO model);
         public Task<long> DeleteFEAsync(long id);
-        public Task<IEnumerable<GetAllAnswerDTO>> GetAllFEAsync();
+        public Task<IEnumerable<GetAllAnswerDTO>> GetAllAnswerAsync(long id);
         public Task<GetAnswerByIdDTO> GetAnswerByIdFEAsync(long id);
 
         //DashBoard
