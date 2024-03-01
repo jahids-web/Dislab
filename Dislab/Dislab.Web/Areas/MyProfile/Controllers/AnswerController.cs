@@ -16,9 +16,11 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             _answerService = answerService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(long id)
         {
-            var data = await _answerService.GetAllFEAsync();
+            ViewBag.QuestionTitle = "Your Question Title";
+
+            var data = await _answerService.GetAllAnswerAsync(id);
             return View(data);
         }
 
