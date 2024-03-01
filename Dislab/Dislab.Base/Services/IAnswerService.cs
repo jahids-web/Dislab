@@ -9,7 +9,7 @@ namespace Dislab.Base.Services
         public Task<bool> InsertFEAsync(InsertAnswerVM model);
         public Task<string> UpdateFEAsync(UpdateAnswerVM model);
         public Task<long> DeleteFEAsync(long id);
-        public Task<IEnumerable<GetAllAnswerVM>> GetAllFEAsync();
+        public Task<IEnumerable<GetAllAnswerVM>> GetAllAnswerAsync(long id);
         public Task<GetAnswerByIdVM> GetAnswerByIdFEAsync(long id);
 
         //DashBoard
