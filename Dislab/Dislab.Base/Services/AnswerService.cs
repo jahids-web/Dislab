@@ -24,9 +24,9 @@ namespace Dislab.Base.Services
             return result;
         }
 
-        public async Task<IEnumerable<GetAllAnswerVM>> GetAllFEAsync()
+        public async Task<IEnumerable<GetAllAnswerVM>> GetAllAnswerAsync(long id)
         {
-            var result = await _unitOfWork.AnswerRepository.GetAllFEAsync();
+            var result = await _unitOfWork.AnswerRepository.GetAllAnswerAsync(id);
             var mappedObject = _mapper.Map<IEnumerable<GetAllAnswerVM>>(result);
             return mappedObject;
         }
