@@ -8,8 +8,11 @@
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>All Answer</h3>
+            <div class="col-12 mb-4 col-md-6 order-md-1 order-last">
+                <p>Question Title</p>
+            </div>
+            <div class="col-12  col-md-12 order-md-1 order-last">
+                <h1>@ViewBag.QuestionTitle</h1>
             </div>
         </div>
     </div>
@@ -19,22 +22,20 @@
             
             </div>
             <div class="col-2">
-
+          @*       <h5 class="fs-20 mb-2">@Html.DisplayFor(x => x.)</h5> *@
             </div>
-
             <div class="card-body">
                 <table class="table" id="table1">
                     <thead>
                         <tr>
                             <th class="fw-bold">No.</th>
-                            <th class="fw-bold" style="width: 450px">Question Title</th>
                             <th class="fw-bold">Answer Body</th>
                             <th class="fw-bold" style="width: 250px">Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        
+                       
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -44,7 +45,7 @@
                                     }
                                     @serialNumber 
                                 </td>
-                                <td>@item.QuestionTitle</td>
+                              
                                 <td>@item.AnswerBody</td>
                                 <td>
                                     <div class="buttons">
