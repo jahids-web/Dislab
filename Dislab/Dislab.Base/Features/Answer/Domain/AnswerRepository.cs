@@ -56,17 +56,15 @@ namespace Dislab.Base.Features.Answer.Entities
             }
         }
 
-        public async Task<IEnumerable<GetAllAnswerDTO>> GetAllFEAsync()
+        public async Task<IEnumerable<GetAllAnswerDTO>> GetAllAnswerAsync(long id)
         {
             try
             {
-                //var sqlQuery = @"SELECT * FROM Answer";
-                var sqlQuery = @"SELECT Answer.*, Question.QuestionTitle
-                   FROM Answer
-                   INNER JOIN Question ON Answer.QuestionID = Question.ID";
+                var sqlQuery = @"Select * from Answer where QuestionId = @id";
+
                 using var connection = _context.CreateConnection();
                 connection.Open();
-                var result = await connection.QueryAsync<GetAllAnswerDTO>(sqlQuery);
+                var result = await connection.QueryAsync<GetAllAnswerDTO>(sqlQuery , new { id });
                 return result;
             }
             catch (Exception exception)
