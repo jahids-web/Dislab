@@ -11,8 +11,8 @@ namespace Dislab.Base.Features.Answer.ViewModel
     {
         public long QuestionId { get; set; }
 
-        [Required]
-        [StringLength(3000, ErrorMessage = "Answer Body can't be more than 3000 characters.")]
+        //[Required]
+        //[StringLength(3000, ErrorMessage = "Answer Body can't be more than 3000 characters.")]
         public string? AnswerBody { get; set; }
     }
 }
