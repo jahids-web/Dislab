@@ -10,7 +10,6 @@
             <div class="question-highlight">
                 <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
                     <div class="media-body">
-                      @*   <a asp-route-id="Id"></a> *@
                         <input name="QuestionId" hidden asp-for="Id">
                         <h5 class="fs-20 mb-2">@Html.DisplayFor(x => x.QuestionTitle)</h5>
                         <p class="mb-2 truncate lh-20 fs-15">@Html.DisplayFor(x => x.QuestionBody)</p> 
@@ -64,8 +63,6 @@
                     </div>
                 </div><!-- end votes -->
                 <div class="answer-body-wrap flex-grow-1">
-                    @*  loop *@
-             
                     <div class="answer-body">
                         <p>Since you're using an <code class="code">arrow-function</code>, <code class="code">this</code> does not refer to the <code class="code">button</code>:</p>
 
@@ -74,7 +71,6 @@
                         </pre>
 
                     </div><!-- end answer-body -->
-
                     <div class="question-post-user-action">
                         <div class="post-menu">
                             <a href="#" class="btn" data-toggle="modal" data-target="#EditModal">Edit</a>
@@ -192,6 +188,8 @@
                    @*  loop *@
                 </div><!-- end answer-body-wrap -->
             </div>
+
+            <!-- End loop answer-wrap -->
 
             <!-- end answer-wrap -->
 
