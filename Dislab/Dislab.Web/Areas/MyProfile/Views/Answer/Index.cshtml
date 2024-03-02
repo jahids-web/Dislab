@@ -8,11 +8,20 @@
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
-            <div class="col-12 mb-4 col-md-6 order-md-1 order-last">
+            <div class="col-12  col-md-6 order-md-1 order-last">
                 <p>Question Title</p>
             </div>
             <div class="col-12  col-md-12 order-md-1 order-last">
-                <h1>@ViewBag.QuestionTitle</h1>
+
+                @if (Model.Any())
+                {
+                    <h4>Question Title: @Model.First().QuestionTitle</h4>
+                }
+                else
+                {
+                    <p>No data available</p>
+                }
+              
             </div>
         </div>
     </div>
@@ -22,7 +31,8 @@
             
             </div>
             <div class="col-2">
-          @*       <h5 class="fs-20 mb-2">@Html.DisplayFor(x => x.)</h5> *@
+        
+
             </div>
             <div class="card-body">
                 <table class="table" id="table1">
