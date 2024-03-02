@@ -60,7 +60,17 @@ namespace Dislab.Base.Features.Answer.Entities
         {
             try
             {
-                var sqlQuery = @"Select * from Answer where QuestionId = @id";
+                //var sqlQuery = @"Select * from Answer where QuestionId = @id";
+
+                var sqlQuery = @"  SELECT 
+                    A.*,
+                    Q.QuestionTitle
+                FROM 
+                    Answer A
+                JOIN 
+                    Question Q ON A.QuestionId = Q.Id
+                WHERE 
+                    A.QuestionId = @id;";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
