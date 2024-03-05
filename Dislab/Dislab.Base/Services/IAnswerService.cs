@@ -11,7 +11,6 @@ namespace Dislab.Base.Services
         public Task<long> DeleteFEAsync(long id);
         public Task<IEnumerable<GetAllAnswerVM>> GetAllAnswerAsync(long id);
         public Task<GetAnswerByIdVM> GetAnswerByIdFEAsync(long id);
-
         //DashBoard
         public Task<AdminAnswerVM> GetAnswerByIdAsync(long id);
         public Task<string> UpdateAsync(AdminAnswerVM model);
