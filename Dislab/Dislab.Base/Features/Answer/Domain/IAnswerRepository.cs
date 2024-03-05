@@ -1,7 +1,5 @@
 ﻿using Dislab.Base.Features.Answer.DTOs;
 using Dislab.Base.Features.Answer.DTOS;
-using Dislab.Base.Features.Answer.ViewModel;
-using Dislab.Base.Features.Questions.DTOs;
 
 namespace Dislab.Base.Features.Answer.Entities
 {
