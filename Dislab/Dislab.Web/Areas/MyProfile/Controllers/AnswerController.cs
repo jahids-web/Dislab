@@ -3,6 +3,7 @@ using Dislab.Base.Features.Questions.ViewModels;
 using Dislab.Base.Services;
 using Dislab.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Dislab.Web.Areas.MyProfile.Controllers
 {
@@ -105,6 +106,34 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
             }
 
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> VoteUp(long id)
+        //{
+        //    try
+        //    {
+        //        _answerService.VoteCountAsync(id);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> VoteDown(long id)
+        //{
+        //    try
+        //    {
+        //        _answerService.VoteCountAsync(id);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //}
 
         //DashBoard
         public async Task<IActionResult> Update(long id)
