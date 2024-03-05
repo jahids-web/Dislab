@@ -1,8 +1,6 @@
 ﻿using Dapper;
 using Dislab.Base.DbContexts;
 using Dislab.Base.Features.Questions.DTOs;
-using Dislab.Base.Features.Questions.Entities;
-using Dislab.Base.Features.Questions.ViewModels;
 
 namespace Dislab.Base.Features.Questions.Domain
 {
@@ -74,14 +72,28 @@ namespace Dislab.Base.Features.Questions.Domain
         {
             try
             {
-                var sqlQuery = @"SELECT Q.Id, Q.QuestionTitle, Q.QuestionBody, A.Id AnswerId, A.AnswerBody 
+                var sqlQuery = @"
+                SELECT Q.Id, Q.QuestionTitle, Q.QuestionBody, A.Id AS AnswerId, A.AnswerBody 
                 FROM Question AS Q
                 INNER JOIN Answer AS A ON Q.Id = A.QuestionId
-                WHERE Q.Id = @Id;";
+                WHERE Q.Id = @Id";
+
+                var questionQuery = @"
+                SELECT QuestionTitle, QuestionBody
+                FROM Question
+                WHERE Id = @id";
 
                 using var connection = _context.CreateConnection();
                 connection.Open();
+
                 var result = await connection.QueryFirstOrDefaultAsync<QuestionDetailsDTO>(sqlQuery, new { id });
+
+                if (result is null)
+                {
+                    var withoutAnswer = await connection.QueryFirstOrDefaultAsync<QuestionDetailsDTO>(questionQuery, new { id });
+                    return withoutAnswer;
+                }
+
                 return result;
             }
             catch (Exception exception)
