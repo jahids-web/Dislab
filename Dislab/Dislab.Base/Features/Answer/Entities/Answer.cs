@@ -13,5 +13,7 @@ namespace Dislab.Base.Features.Answer.Entities
         public long Id { get; set; }
         public long QuestionId {  get; set; }
         public string? AnswerBody { get; set; }
+        public int UpVotes { get; set; }
+        public int DownVotes { get; set; }
     }
 }
