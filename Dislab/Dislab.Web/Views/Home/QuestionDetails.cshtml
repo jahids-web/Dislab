@@ -52,20 +52,19 @@
             </div><!-- end subheader -->
 
             <!-- Start loop answer-wrap -->
-
             <div class="answer-wrap d-flex">
                 <div class="votes votes-styled w-auto">
-                    <div id="vote2" class="upvotejs">
+                    <div id="vote" class="upvotejs">
                         <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
-                        <span class="count">2</span>
+                        <span class="count">1</span>
                         <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
-                        <a class="star check star-on" data-toggle="tooltip" data-placement="right" title="The question owner accepted this answer"></a>
+                        <a class="star" data-toggle="tooltip" data-placement="right" title="Bookmark this question."></a>
                     </div>
                 </div><!-- end votes -->
+
                 <div class="answer-body-wrap flex-grow-1">
                     <div class="answer-body">
                         <p>Since you're using an <code class="code">arrow-function</code>, <code class="code">this</code> does not refer to the <code class="code">button</code>:</p>
-
                         <pre class="code-block custom-scrollbar-styled">
                             <p>@Html.DisplayFor(x => x.AnswerBody)</p>
                         </pre>
@@ -435,3 +434,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    function vote(url) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            success: function (data) {
+                // Update the UI with the new vote count
+                // You may need to reload the entire page or update specific elements
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+            }
+        });
+    }
+</script>
