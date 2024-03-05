@@ -4,8 +4,6 @@ using Dislab.Base.Features.Answer.DTOs;
 using Dislab.Base.Features.Answer.DTOS;
 using Dislab.Base.Features.Answer.ViewModel;
 using Dislab.Base.Features.Questions.DTOs;
-using Dislab.Base.Features.Questions.Entities;
-using System;
 
 namespace Dislab.Base.Features.Answer.Entities
 {
@@ -62,7 +60,7 @@ namespace Dislab.Base.Features.Answer.Entities
             {
                 //var sqlQuery = @"Select * from Answer where QuestionId = @id";
 
-                var sqlQuery = @"  SELECT 
+                var sqlQuery = @"SELECT 
                     A.*,
                     Q.QuestionTitle
                 FROM 
@@ -167,6 +165,5 @@ namespace Dislab.Base.Features.Answer.Entities
                 throw new InvalidOperationException(exception.Message, exception);
             }
         }
-
     }
 }
