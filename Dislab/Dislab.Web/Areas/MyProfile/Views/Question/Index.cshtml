@@ -5,6 +5,16 @@
     Layout = "~/Areas/MyProfile/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["message"] != null)
+{
+    <script src="/lib/jquery///dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.success('@TempData["message"]');
+    </script>
+}
+
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
@@ -107,7 +117,7 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
     <script>
 
@@ -123,17 +133,6 @@
         $("#deleteButton").click(function () {
             $("#deleteForm").submit();
         });
-
-        function displayAlert() 
-        {
-            Swal.fire({
-                title: "Good job!",
-                text: "Your data is Deleted",
-                icon: "success",
-
-            });
-        }
-
     
     </script>
 
