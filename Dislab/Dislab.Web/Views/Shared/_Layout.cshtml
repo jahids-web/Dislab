@@ -28,8 +28,10 @@
     <link rel="stylesheet" href="~/home/assets/css/upvotejs.min.css">
     <link rel="stylesheet" href="~/home/assets/css/selectize.css">
     <link rel="stylesheet" href="~/home/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
     @await RenderSectionAsync("Style", required: false)
-    <!-- end inject -->
+
 </head>
 <body>
 
@@ -158,7 +160,7 @@
                 To ask, to learn, to share, to grow.
             </p>
             <div class="hero-btn-box py-4">
-                    <a asp-area=" " asp-controller="Home" asp-action="AskQuestion" class="btn theme-btn theme-btn-outline">Ask a Question</a>
+                 <a asp-area="" asp-controller="Home" asp-action="AskQuestion" class="btn theme-btn theme-btn-outline">Ask a Question</a>
             </div>
                
         </div><!-- end hero-content -->
@@ -506,7 +508,8 @@
     <script src="~/home/assets/js/upvote-script.js"></script>
     <script src="~/home/assets/js/selectize.min.js"></script>
     <script src="~/home/assets/js/main.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
 </body>
 
 <!-- Mirrored from techydevs.com/demos/themes/html/disilab-demo/disilab/home-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Nov 2021 10:51:06 GMT -->
