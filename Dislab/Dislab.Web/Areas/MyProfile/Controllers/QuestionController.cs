@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using AutoMapper;
 using Dislab.Base.Features.Questions.DTOs;
 using Dislab.Base.Features.Questions.Entities;
 using Dislab.Base.Features.Questions.ViewModels;
@@ -36,6 +37,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                 if (ModelState.IsValid)
                 {
                     var result = await _askQuestionService.InsertFEAsync(model);
+                    TempData["message"] = "Question Inserted Successfully";
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -50,8 +52,8 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         {
             try
             {
-                ViewData["DeleteMessage"] = "Your data is Deleted Successfully!";
                 await _askQuestionService.DeleteFEAsync(id);
+                TempData["message"] = "Your Data Deleted Successfully!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception exception)
@@ -65,6 +67,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
         public async Task<IActionResult> GetQuestionByFEId(long id)
         {
             var question = await _askQuestionService.GetQuestionByFEIdAsync(id);
+
             return Ok(new
             {
                 IsSuccess = true,
@@ -115,6 +118,7 @@ namespace Dislab.Web.Areas.MyProfile.Controllers
                 if (ModelState.IsValid)
                 {
                     await _askQuestionService.UpdateAsync(model);
+                    TempData["message"] = "Your Data Updated Successfully!";
                     return RedirectToAction(nameof(Index));
                 }
                 else
