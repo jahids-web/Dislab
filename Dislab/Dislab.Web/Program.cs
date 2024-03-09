@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
@@ -44,6 +46,7 @@ namespace Dislab.Web
             //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddAutoMapper(typeof(QuestionProfile));
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -64,6 +67,8 @@ namespace Dislab.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseNotyf();
 
             app.MapControllerRoute(
             name: "areas",
