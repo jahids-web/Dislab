@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification.Abstractions;
 using AutoMapper;
 using Dapper.Extensions;
 using Dislab.Base.Features.Questions.ViewModels;
@@ -13,7 +14,7 @@ namespace Dislab.Web.Controllers
         private readonly IQuestionService _askQuestionService;
         private readonly IMapper _mapper;
 
-        public HomeController(IQuestionService askQuestionService, IMapper mapper)
+        public HomeController(IQuestionService askQuestionService, IMapper mapper )
         {
             _askQuestionService = askQuestionService;
             _mapper = mapper;
@@ -43,6 +44,8 @@ namespace Dislab.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     var result = await _askQuestionService.InsertFEAsync(model);
+                    TempData["message"] = "Question Inserted Successfully";
+
                 }
                 return RedirectToAction(nameof(Index));
             }
