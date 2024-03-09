@@ -2,6 +2,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+ 
+@if (TempData["message"] != null)
+{
+    <script src="/lib/jquery///dist/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.success('@TempData["message"]');
+    </script>
+}
 
 <div class="col-lg-2 pr-0">
     <div class="sidebar pb-45px position-sticky top-0">
