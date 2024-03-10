@@ -68,8 +68,6 @@ namespace Dislab.Web
 
             app.UseAuthorization();
 
-            app.UseNotyf();
-
             app.MapControllerRoute(
             name: "areas",
             pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
